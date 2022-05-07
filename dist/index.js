@@ -1,44 +1,44 @@
 module.exports =
 /******/ (function(modules, runtime) { // webpackBootstrap
-/******/     "use strict";
-/******/     // The module cache
-/******/     var installedModules = {};
+/******/ 	"use strict";
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 /******/
-/******/     // The require function
-/******/     function __webpack_require__(moduleId) {
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
 /******/
-/******/         // Check if module is in cache
-/******/         if(installedModules[moduleId]) {
-/******/             return installedModules[moduleId].exports;
-/******/         }
-/******/         // Create a new module (and put it into the cache)
-/******/         var module = installedModules[moduleId] = {
-/******/             i: moduleId,
-/******/             l: false,
-/******/             exports: {}
-/******/         };
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
 /******/
-/******/         // Execute the module function
-/******/         modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/
-/******/         // Flag the module as loaded
-/******/         module.l = true;
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
 /******/
-/******/         // Return the exports of the module
-/******/         return module.exports;
-/******/     }
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 /******/
 /******/
-/******/     __webpack_require__.ab = __dirname + "/";
+/******/ 	__webpack_require__.ab = __dirname + "/";
 /******/
-/******/     // the startup function
-/******/     function startup() {
-/******/         // Load entry module and return exports
-/******/         return __webpack_require__(31);
-/******/     };
+/******/ 	// the startup function
+/******/ 	function startup() {
+/******/ 		// Load entry module and return exports
+/******/ 		return __webpack_require__(31);
+/******/ 	};
 /******/
-/******/     // run startup
-/******/     return startup();
+/******/ 	// run startup
+/******/ 	return startup();
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -73,43 +73,43 @@ const macosRelease = __webpack_require__(118);
 const winRelease = __webpack_require__(49);
 
 const osName = (platform, release) => {
-    if (!platform && release) {
-        throw new Error('You can\'t specify a `release` without specifying `platform`');
-    }
+	if (!platform && release) {
+		throw new Error('You can\'t specify a `release` without specifying `platform`');
+	}
 
-    platform = platform || os.platform();
+	platform = platform || os.platform();
 
-    let id;
+	let id;
 
-    if (platform === 'darwin') {
-        if (!release && os.platform() === 'darwin') {
-            release = os.release();
-        }
+	if (platform === 'darwin') {
+		if (!release && os.platform() === 'darwin') {
+			release = os.release();
+		}
 
-        const prefix = release ? (Number(release.split('.')[0]) > 15 ? 'macOS' : 'OS X') : 'macOS';
-        id = release ? macosRelease(release).name : '';
-        return prefix + (id ? ' ' + id : '');
-    }
+		const prefix = release ? (Number(release.split('.')[0]) > 15 ? 'macOS' : 'OS X') : 'macOS';
+		id = release ? macosRelease(release).name : '';
+		return prefix + (id ? ' ' + id : '');
+	}
 
-    if (platform === 'linux') {
-        if (!release && os.platform() === 'linux') {
-            release = os.release();
-        }
+	if (platform === 'linux') {
+		if (!release && os.platform() === 'linux') {
+			release = os.release();
+		}
 
-        id = release ? release.replace(/^(\d+\.\d+).*/, '$1') : '';
-        return 'Linux' + (id ? ' ' + id : '');
-    }
+		id = release ? release.replace(/^(\d+\.\d+).*/, '$1') : '';
+		return 'Linux' + (id ? ' ' + id : '');
+	}
 
-    if (platform === 'win32') {
-        if (!release && os.platform() === 'win32') {
-            release = os.release();
-        }
+	if (platform === 'win32') {
+		if (!release && os.platform() === 'win32') {
+			release = os.release();
+		}
 
-        id = release ? winRelease(release) : '';
-        return 'Windows' + (id ? ' ' + id : '');
-    }
+		id = release ? winRelease(release) : '';
+		return 'Windows' + (id ? ' ' + id : '');
+	}
 
-    return platform;
+	return platform;
 };
 
 module.exports = osName;
@@ -163,85 +163,85 @@ var once = __webpack_require__(969);
 var noop = function() {};
 
 var isRequest = function(stream) {
-    return stream.setHeader && typeof stream.abort === 'function';
+	return stream.setHeader && typeof stream.abort === 'function';
 };
 
 var isChildProcess = function(stream) {
-    return stream.stdio && Array.isArray(stream.stdio) && stream.stdio.length === 3
+	return stream.stdio && Array.isArray(stream.stdio) && stream.stdio.length === 3
 };
 
 var eos = function(stream, opts, callback) {
-    if (typeof opts === 'function') return eos(stream, null, opts);
-    if (!opts) opts = {};
+	if (typeof opts === 'function') return eos(stream, null, opts);
+	if (!opts) opts = {};
 
-    callback = once(callback || noop);
+	callback = once(callback || noop);
 
-    var ws = stream._writableState;
-    var rs = stream._readableState;
-    var readable = opts.readable || (opts.readable !== false && stream.readable);
-    var writable = opts.writable || (opts.writable !== false && stream.writable);
+	var ws = stream._writableState;
+	var rs = stream._readableState;
+	var readable = opts.readable || (opts.readable !== false && stream.readable);
+	var writable = opts.writable || (opts.writable !== false && stream.writable);
 
-    var onlegacyfinish = function() {
-        if (!stream.writable) onfinish();
-    };
+	var onlegacyfinish = function() {
+		if (!stream.writable) onfinish();
+	};
 
-    var onfinish = function() {
-        writable = false;
-        if (!readable) callback.call(stream);
-    };
+	var onfinish = function() {
+		writable = false;
+		if (!readable) callback.call(stream);
+	};
 
-    var onend = function() {
-        readable = false;
-        if (!writable) callback.call(stream);
-    };
+	var onend = function() {
+		readable = false;
+		if (!writable) callback.call(stream);
+	};
 
-    var onexit = function(exitCode) {
-        callback.call(stream, exitCode ? new Error('exited with error code: ' + exitCode) : null);
-    };
+	var onexit = function(exitCode) {
+		callback.call(stream, exitCode ? new Error('exited with error code: ' + exitCode) : null);
+	};
 
-    var onerror = function(err) {
-        callback.call(stream, err);
-    };
+	var onerror = function(err) {
+		callback.call(stream, err);
+	};
 
-    var onclose = function() {
-        if (readable && !(rs && rs.ended)) return callback.call(stream, new Error('premature close'));
-        if (writable && !(ws && ws.ended)) return callback.call(stream, new Error('premature close'));
-    };
+	var onclose = function() {
+		if (readable && !(rs && rs.ended)) return callback.call(stream, new Error('premature close'));
+		if (writable && !(ws && ws.ended)) return callback.call(stream, new Error('premature close'));
+	};
 
-    var onrequest = function() {
-        stream.req.on('finish', onfinish);
-    };
+	var onrequest = function() {
+		stream.req.on('finish', onfinish);
+	};
 
-    if (isRequest(stream)) {
-        stream.on('complete', onfinish);
-        stream.on('abort', onclose);
-        if (stream.req) onrequest();
-        else stream.on('request', onrequest);
-    } else if (writable && !ws) { // legacy streams
-        stream.on('end', onlegacyfinish);
-        stream.on('close', onlegacyfinish);
-    }
+	if (isRequest(stream)) {
+		stream.on('complete', onfinish);
+		stream.on('abort', onclose);
+		if (stream.req) onrequest();
+		else stream.on('request', onrequest);
+	} else if (writable && !ws) { // legacy streams
+		stream.on('end', onlegacyfinish);
+		stream.on('close', onlegacyfinish);
+	}
 
-    if (isChildProcess(stream)) stream.on('exit', onexit);
+	if (isChildProcess(stream)) stream.on('exit', onexit);
 
-    stream.on('end', onend);
-    stream.on('finish', onfinish);
-    if (opts.error !== false) stream.on('error', onerror);
-    stream.on('close', onclose);
+	stream.on('end', onend);
+	stream.on('finish', onfinish);
+	if (opts.error !== false) stream.on('error', onerror);
+	stream.on('close', onclose);
 
-    return function() {
-        stream.removeListener('complete', onfinish);
-        stream.removeListener('abort', onclose);
-        stream.removeListener('request', onrequest);
-        if (stream.req) stream.req.removeListener('finish', onfinish);
-        stream.removeListener('end', onlegacyfinish);
-        stream.removeListener('close', onlegacyfinish);
-        stream.removeListener('finish', onfinish);
-        stream.removeListener('exit', onexit);
-        stream.removeListener('end', onend);
-        stream.removeListener('error', onerror);
-        stream.removeListener('close', onclose);
-    };
+	return function() {
+		stream.removeListener('complete', onfinish);
+		stream.removeListener('abort', onclose);
+		stream.removeListener('request', onrequest);
+		if (stream.req) stream.req.removeListener('finish', onfinish);
+		stream.removeListener('end', onlegacyfinish);
+		stream.removeListener('close', onlegacyfinish);
+		stream.removeListener('finish', onfinish);
+		stream.removeListener('exit', onexit);
+		stream.removeListener('end', onend);
+		stream.removeListener('error', onerror);
+		stream.removeListener('close', onclose);
+	};
 };
 
 module.exports = eos;
@@ -400,16 +400,16 @@ run();
 "use strict";
 
 module.exports = opts => {
-    opts = opts || {};
+	opts = opts || {};
 
-    const env = opts.env || process.env;
-    const platform = opts.platform || process.platform;
+	const env = opts.env || process.env;
+	const platform = opts.platform || process.platform;
 
-    if (platform !== 'win32') {
-        return 'PATH';
-    }
+	if (platform !== 'win32') {
+		return 'PATH';
+	}
 
-    return Object.keys(env).find(x => x.toUpperCase() === 'PATH') || 'Path';
+	return Object.keys(env).find(x => x.toUpperCase() === 'PATH') || 'Path';
 };
 
 
@@ -464,41 +464,41 @@ const execa = __webpack_require__(955);
 
 // Reference: https://www.gaijin.at/en/lstwinver.php
 const names = new Map([
-    ['10.0', '10'],
-    ['6.3', '8.1'],
-    ['6.2', '8'],
-    ['6.1', '7'],
-    ['6.0', 'Vista'],
-    ['5.2', 'Server 2003'],
-    ['5.1', 'XP'],
-    ['5.0', '2000'],
-    ['4.9', 'ME'],
-    ['4.1', '98'],
-    ['4.0', '95']
+	['10.0', '10'],
+	['6.3', '8.1'],
+	['6.2', '8'],
+	['6.1', '7'],
+	['6.0', 'Vista'],
+	['5.2', 'Server 2003'],
+	['5.1', 'XP'],
+	['5.0', '2000'],
+	['4.9', 'ME'],
+	['4.1', '98'],
+	['4.0', '95']
 ]);
 
 const windowsRelease = release => {
-    const version = /\d+\.\d/.exec(release || os.release());
+	const version = /\d+\.\d/.exec(release || os.release());
 
-    if (release && !version) {
-        throw new Error('`release` argument doesn\'t match `n.n`');
-    }
+	if (release && !version) {
+		throw new Error('`release` argument doesn\'t match `n.n`');
+	}
 
-    const ver = (version || [])[0];
+	const ver = (version || [])[0];
 
-    // Server 2008, 2012 and 2016 versions are ambiguous with desktop versions and must be detected at runtime.
-    // If `release` is omitted or we're on a Windows system, and the version number is an ambiguous version
-    // then use `wmic` to get the OS caption: https://msdn.microsoft.com/en-us/library/aa394531(v=vs.85).aspx
-    // If the resulting caption contains the year 2008, 2012 or 2016, it is a server version, so return a server OS name.
-    if ((!release || release === os.release()) && ['6.1', '6.2', '6.3', '10.0'].includes(ver)) {
-        const stdout = execa.sync('wmic', ['os', 'get', 'Caption']).stdout || '';
-        const year = (stdout.match(/2008|2012|2016/) || [])[0];
-        if (year) {
-            return `Server ${year}`;
-        }
-    }
+	// Server 2008, 2012 and 2016 versions are ambiguous with desktop versions and must be detected at runtime.
+	// If `release` is omitted or we're on a Windows system, and the version number is an ambiguous version
+	// then use `wmic` to get the OS caption: https://msdn.microsoft.com/en-us/library/aa394531(v=vs.85).aspx
+	// If the resulting caption contains the year 2008, 2012 or 2016, it is a server version, so return a server OS name.
+	if ((!release || release === os.release()) && ['6.1', '6.2', '6.3', '10.0'].includes(ver)) {
+		const stdout = execa.sync('wmic', ['os', 'get', 'Caption']).stdout || '';
+		const year = (stdout.match(/2008|2012|2016/) || [])[0];
+		if (year) {
+			return `Server ${year}`;
+		}
+	}
 
-    return names.get(ver);
+	return names.get(ver);
 };
 
 module.exports = windowsRelease;
@@ -617,29 +617,29 @@ exports.issueCommand = issueCommand;
 const os = __webpack_require__(87);
 
 const nameMap = new Map([
-    [19, 'Catalina'],
-    [18, 'Mojave'],
-    [17, 'High Sierra'],
-    [16, 'Sierra'],
-    [15, 'El Capitan'],
-    [14, 'Yosemite'],
-    [13, 'Mavericks'],
-    [12, 'Mountain Lion'],
-    [11, 'Lion'],
-    [10, 'Snow Leopard'],
-    [9, 'Leopard'],
-    [8, 'Tiger'],
-    [7, 'Panther'],
-    [6, 'Jaguar'],
-    [5, 'Puma']
+	[19, 'Catalina'],
+	[18, 'Mojave'],
+	[17, 'High Sierra'],
+	[16, 'Sierra'],
+	[15, 'El Capitan'],
+	[14, 'Yosemite'],
+	[13, 'Mavericks'],
+	[12, 'Mountain Lion'],
+	[11, 'Lion'],
+	[10, 'Snow Leopard'],
+	[9, 'Leopard'],
+	[8, 'Tiger'],
+	[7, 'Panther'],
+	[6, 'Jaguar'],
+	[5, 'Puma']
 ]);
 
 const macosRelease = release => {
-    release = Number((release || os.release()).split('.')[0]);
-    return {
-        name: nameMap.get(release),
-        version: '10.' + (release - 4)
-    };
+	release = Number((release || os.release()).split('.')[0]);
+	return {
+		name: nameMap.get(release),
+		version: '10.' + (release - 4)
+	};
 };
 
 module.exports = macosRelease;
@@ -1870,45 +1870,45 @@ const pump = __webpack_require__(453);
 const bufferStream = __webpack_require__(966);
 
 class MaxBufferError extends Error {
-    constructor() {
-        super('maxBuffer exceeded');
-        this.name = 'MaxBufferError';
-    }
+	constructor() {
+		super('maxBuffer exceeded');
+		this.name = 'MaxBufferError';
+	}
 }
 
 function getStream(inputStream, options) {
-    if (!inputStream) {
-        return Promise.reject(new Error('Expected a stream'));
-    }
+	if (!inputStream) {
+		return Promise.reject(new Error('Expected a stream'));
+	}
 
-    options = Object.assign({maxBuffer: Infinity}, options);
+	options = Object.assign({maxBuffer: Infinity}, options);
 
-    const {maxBuffer} = options;
+	const {maxBuffer} = options;
 
-    let stream;
-    return new Promise((resolve, reject) => {
-        const rejectPromise = error => {
-            if (error) { // A null check
-                error.bufferedData = stream.getBufferedValue();
-            }
-            reject(error);
-        };
+	let stream;
+	return new Promise((resolve, reject) => {
+		const rejectPromise = error => {
+			if (error) { // A null check
+				error.bufferedData = stream.getBufferedValue();
+			}
+			reject(error);
+		};
 
-        stream = pump(inputStream, bufferStream(options), error => {
-            if (error) {
-                rejectPromise(error);
-                return;
-            }
+		stream = pump(inputStream, bufferStream(options), error => {
+			if (error) {
+				rejectPromise(error);
+				return;
+			}
 
-            resolve();
-        });
+			resolve();
+		});
 
-        stream.on('data', () => {
-            if (stream.getBufferedLength() > maxBuffer) {
-                rejectPromise(new MaxBufferError());
-            }
-        });
-    }).then(() => stream.getBufferedValue());
+		stream.on('data', () => {
+			if (stream.getBufferedLength() > maxBuffer) {
+				rejectPromise(new MaxBufferError());
+			}
+		});
+	}).then(() => stream.getBufferedValue());
 }
 
 module.exports = getStream;
@@ -1945,40 +1945,40 @@ const alias = ['stdin', 'stdout', 'stderr'];
 const hasAlias = opts => alias.some(x => Boolean(opts[x]));
 
 module.exports = opts => {
-    if (!opts) {
-        return null;
-    }
+	if (!opts) {
+		return null;
+	}
 
-    if (opts.stdio && hasAlias(opts)) {
-        throw new Error(`It's not possible to provide \`stdio\` in combination with one of ${alias.map(x => `\`${x}\``).join(', ')}`);
-    }
+	if (opts.stdio && hasAlias(opts)) {
+		throw new Error(`It's not possible to provide \`stdio\` in combination with one of ${alias.map(x => `\`${x}\``).join(', ')}`);
+	}
 
-    if (typeof opts.stdio === 'string') {
-        return opts.stdio;
-    }
+	if (typeof opts.stdio === 'string') {
+		return opts.stdio;
+	}
 
-    const stdio = opts.stdio || [];
+	const stdio = opts.stdio || [];
 
-    if (!Array.isArray(stdio)) {
-        throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof stdio}\``);
-    }
+	if (!Array.isArray(stdio)) {
+		throw new TypeError(`Expected \`stdio\` to be of type \`string\` or \`Array\`, got \`${typeof stdio}\``);
+	}
 
-    const result = [];
-    const len = Math.max(stdio.length, alias.length);
+	const result = [];
+	const len = Math.max(stdio.length, alias.length);
 
-    for (let i = 0; i < len; i++) {
-        let value = null;
+	for (let i = 0; i < len; i++) {
+		let value = null;
 
-        if (stdio[i] !== undefined) {
-            value = stdio[i];
-        } else if (opts[alias[i]] !== undefined) {
-            value = opts[alias[i]];
-        }
+		if (stdio[i] !== undefined) {
+			value = stdio[i];
+		} else if (opts[alias[i]] !== undefined) {
+			value = opts[alias[i]];
+		}
 
-        result[i] = value;
-    }
+		result[i] = value;
+	}
 
-    return result;
+	return result;
 };
 
 
@@ -4246,23 +4246,23 @@ module.exports = {"name":"@octokit/graphql","version":"2.1.3","publishConfig":{"
 
 
 var isStream = module.exports = function (stream) {
-    return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
+	return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
 };
 
 isStream.writable = function (stream) {
-    return isStream(stream) && stream.writable !== false && typeof stream._write === 'function' && typeof stream._writableState === 'object';
+	return isStream(stream) && stream.writable !== false && typeof stream._write === 'function' && typeof stream._writableState === 'object';
 };
 
 isStream.readable = function (stream) {
-    return isStream(stream) && stream.readable !== false && typeof stream._read === 'function' && typeof stream._readableState === 'object';
+	return isStream(stream) && stream.readable !== false && typeof stream._read === 'function' && typeof stream._readableState === 'object';
 };
 
 isStream.duplex = function (stream) {
-    return isStream.writable(stream) && isStream.readable(stream);
+	return isStream.writable(stream) && isStream.readable(stream);
 };
 
 isStream.transform = function (stream) {
-    return isStream.duplex(stream) && typeof stream._transform === 'function' && typeof stream._transformState === 'object';
+	return isStream.duplex(stream) && typeof stream._transform === 'function' && typeof stream._transformState === 'object';
 };
 
 
@@ -5080,35 +5080,35 @@ const util = __webpack_require__(669);
 let uv;
 
 if (typeof util.getSystemErrorName === 'function') {
-    module.exports = util.getSystemErrorName;
+	module.exports = util.getSystemErrorName;
 } else {
-    try {
-        uv = process.binding('uv');
+	try {
+		uv = process.binding('uv');
 
-        if (typeof uv.errname !== 'function') {
-            throw new TypeError('uv.errname is not a function');
-        }
-    } catch (err) {
-        console.error('execa/lib/errname: unable to establish process.binding(\'uv\')', err);
-        uv = null;
-    }
+		if (typeof uv.errname !== 'function') {
+			throw new TypeError('uv.errname is not a function');
+		}
+	} catch (err) {
+		console.error('execa/lib/errname: unable to establish process.binding(\'uv\')', err);
+		uv = null;
+	}
 
-    module.exports = code => errname(uv, code);
+	module.exports = code => errname(uv, code);
 }
 
 // Used for testing the fallback behavior
 module.exports.__test__ = errname;
 
 function errname(uv, code) {
-    if (uv) {
-        return uv.errname(code);
-    }
+	if (uv) {
+		return uv.errname(code);
+	}
 
-    if (!(code < 0)) {
-        throw new Error('err >= 0');
-    }
+	if (!(code < 0)) {
+		throw new Error('err >= 0');
+	}
 
-    return `Unknown system error ${code}`;
+	return `Unknown system error ${code}`;
 }
 
 
@@ -5342,109 +5342,109 @@ const BUFFER = Symbol('buffer');
 const TYPE = Symbol('type');
 
 class Blob {
-    constructor() {
-        this[TYPE] = '';
+	constructor() {
+		this[TYPE] = '';
 
-        const blobParts = arguments[0];
-        const options = arguments[1];
+		const blobParts = arguments[0];
+		const options = arguments[1];
 
-        const buffers = [];
-        let size = 0;
+		const buffers = [];
+		let size = 0;
 
-        if (blobParts) {
-            const a = blobParts;
-            const length = Number(a.length);
-            for (let i = 0; i < length; i++) {
-                const element = a[i];
-                let buffer;
-                if (element instanceof Buffer) {
-                    buffer = element;
-                } else if (ArrayBuffer.isView(element)) {
-                    buffer = Buffer.from(element.buffer, element.byteOffset, element.byteLength);
-                } else if (element instanceof ArrayBuffer) {
-                    buffer = Buffer.from(element);
-                } else if (element instanceof Blob) {
-                    buffer = element[BUFFER];
-                } else {
-                    buffer = Buffer.from(typeof element === 'string' ? element : String(element));
-                }
-                size += buffer.length;
-                buffers.push(buffer);
-            }
-        }
+		if (blobParts) {
+			const a = blobParts;
+			const length = Number(a.length);
+			for (let i = 0; i < length; i++) {
+				const element = a[i];
+				let buffer;
+				if (element instanceof Buffer) {
+					buffer = element;
+				} else if (ArrayBuffer.isView(element)) {
+					buffer = Buffer.from(element.buffer, element.byteOffset, element.byteLength);
+				} else if (element instanceof ArrayBuffer) {
+					buffer = Buffer.from(element);
+				} else if (element instanceof Blob) {
+					buffer = element[BUFFER];
+				} else {
+					buffer = Buffer.from(typeof element === 'string' ? element : String(element));
+				}
+				size += buffer.length;
+				buffers.push(buffer);
+			}
+		}
 
-        this[BUFFER] = Buffer.concat(buffers);
+		this[BUFFER] = Buffer.concat(buffers);
 
-        let type = options && options.type !== undefined && String(options.type).toLowerCase();
-        if (type && !/[^\u0020-\u007E]/.test(type)) {
-            this[TYPE] = type;
-        }
-    }
-    get size() {
-        return this[BUFFER].length;
-    }
-    get type() {
-        return this[TYPE];
-    }
-    text() {
-        return Promise.resolve(this[BUFFER].toString());
-    }
-    arrayBuffer() {
-        const buf = this[BUFFER];
-        const ab = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
-        return Promise.resolve(ab);
-    }
-    stream() {
-        const readable = new Readable();
-        readable._read = function () {};
-        readable.push(this[BUFFER]);
-        readable.push(null);
-        return readable;
-    }
-    toString() {
-        return '[object Blob]';
-    }
-    slice() {
-        const size = this.size;
+		let type = options && options.type !== undefined && String(options.type).toLowerCase();
+		if (type && !/[^\u0020-\u007E]/.test(type)) {
+			this[TYPE] = type;
+		}
+	}
+	get size() {
+		return this[BUFFER].length;
+	}
+	get type() {
+		return this[TYPE];
+	}
+	text() {
+		return Promise.resolve(this[BUFFER].toString());
+	}
+	arrayBuffer() {
+		const buf = this[BUFFER];
+		const ab = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
+		return Promise.resolve(ab);
+	}
+	stream() {
+		const readable = new Readable();
+		readable._read = function () {};
+		readable.push(this[BUFFER]);
+		readable.push(null);
+		return readable;
+	}
+	toString() {
+		return '[object Blob]';
+	}
+	slice() {
+		const size = this.size;
 
-        const start = arguments[0];
-        const end = arguments[1];
-        let relativeStart, relativeEnd;
-        if (start === undefined) {
-            relativeStart = 0;
-        } else if (start < 0) {
-            relativeStart = Math.max(size + start, 0);
-        } else {
-            relativeStart = Math.min(start, size);
-        }
-        if (end === undefined) {
-            relativeEnd = size;
-        } else if (end < 0) {
-            relativeEnd = Math.max(size + end, 0);
-        } else {
-            relativeEnd = Math.min(end, size);
-        }
-        const span = Math.max(relativeEnd - relativeStart, 0);
+		const start = arguments[0];
+		const end = arguments[1];
+		let relativeStart, relativeEnd;
+		if (start === undefined) {
+			relativeStart = 0;
+		} else if (start < 0) {
+			relativeStart = Math.max(size + start, 0);
+		} else {
+			relativeStart = Math.min(start, size);
+		}
+		if (end === undefined) {
+			relativeEnd = size;
+		} else if (end < 0) {
+			relativeEnd = Math.max(size + end, 0);
+		} else {
+			relativeEnd = Math.min(end, size);
+		}
+		const span = Math.max(relativeEnd - relativeStart, 0);
 
-        const buffer = this[BUFFER];
-        const slicedBuffer = buffer.slice(relativeStart, relativeStart + span);
-        const blob = new Blob([], { type: arguments[2] });
-        blob[BUFFER] = slicedBuffer;
-        return blob;
-    }
+		const buffer = this[BUFFER];
+		const slicedBuffer = buffer.slice(relativeStart, relativeStart + span);
+		const blob = new Blob([], { type: arguments[2] });
+		blob[BUFFER] = slicedBuffer;
+		return blob;
+	}
 }
 
 Object.defineProperties(Blob.prototype, {
-    size: { enumerable: true },
-    type: { enumerable: true },
-    slice: { enumerable: true }
+	size: { enumerable: true },
+	type: { enumerable: true },
+	slice: { enumerable: true }
 });
 
 Object.defineProperty(Blob.prototype, Symbol.toStringTag, {
-    value: 'Blob',
-    writable: false,
-    enumerable: false,
-    configurable: true
+	value: 'Blob',
+	writable: false,
+	enumerable: false,
+	configurable: true
 });
 
 /**
@@ -5482,7 +5482,7 @@ FetchError.prototype.name = 'FetchError';
 
 let convert;
 try {
-    convert = __webpack_require__(18).convert;
+	convert = __webpack_require__(18).convert;
 } catch (e) {}
 
 const INTERNALS = Symbol('Body internals');
@@ -5500,156 +5500,156 @@ const PassThrough = Stream.PassThrough;
  * @return  Void
  */
 function Body(body) {
-    var _this = this;
+	var _this = this;
 
-    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-        _ref$size = _ref.size;
+	var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	    _ref$size = _ref.size;
 
-    let size = _ref$size === undefined ? 0 : _ref$size;
-    var _ref$timeout = _ref.timeout;
-    let timeout = _ref$timeout === undefined ? 0 : _ref$timeout;
+	let size = _ref$size === undefined ? 0 : _ref$size;
+	var _ref$timeout = _ref.timeout;
+	let timeout = _ref$timeout === undefined ? 0 : _ref$timeout;
 
-    if (body == null) {
-        // body is undefined or null
-        body = null;
-    } else if (isURLSearchParams(body)) {
-        // body is a URLSearchParams
-        body = Buffer.from(body.toString());
-    } else if (isBlob(body)) ; else if (Buffer.isBuffer(body)) ; else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
-        // body is ArrayBuffer
-        body = Buffer.from(body);
-    } else if (ArrayBuffer.isView(body)) {
-        // body is ArrayBufferView
-        body = Buffer.from(body.buffer, body.byteOffset, body.byteLength);
-    } else if (body instanceof Stream) ; else {
-        // none of the above
-        // coerce to string then buffer
-        body = Buffer.from(String(body));
-    }
-    this[INTERNALS] = {
-        body,
-        disturbed: false,
-        error: null
-    };
-    this.size = size;
-    this.timeout = timeout;
+	if (body == null) {
+		// body is undefined or null
+		body = null;
+	} else if (isURLSearchParams(body)) {
+		// body is a URLSearchParams
+		body = Buffer.from(body.toString());
+	} else if (isBlob(body)) ; else if (Buffer.isBuffer(body)) ; else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is ArrayBuffer
+		body = Buffer.from(body);
+	} else if (ArrayBuffer.isView(body)) {
+		// body is ArrayBufferView
+		body = Buffer.from(body.buffer, body.byteOffset, body.byteLength);
+	} else if (body instanceof Stream) ; else {
+		// none of the above
+		// coerce to string then buffer
+		body = Buffer.from(String(body));
+	}
+	this[INTERNALS] = {
+		body,
+		disturbed: false,
+		error: null
+	};
+	this.size = size;
+	this.timeout = timeout;
 
-    if (body instanceof Stream) {
-        body.on('error', function (err) {
-            const error = err.name === 'AbortError' ? err : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, 'system', err);
-            _this[INTERNALS].error = error;
-        });
-    }
+	if (body instanceof Stream) {
+		body.on('error', function (err) {
+			const error = err.name === 'AbortError' ? err : new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, 'system', err);
+			_this[INTERNALS].error = error;
+		});
+	}
 }
 
 Body.prototype = {
-    get body() {
-        return this[INTERNALS].body;
-    },
+	get body() {
+		return this[INTERNALS].body;
+	},
 
-    get bodyUsed() {
-        return this[INTERNALS].disturbed;
-    },
+	get bodyUsed() {
+		return this[INTERNALS].disturbed;
+	},
 
-    /**
+	/**
   * Decode response as ArrayBuffer
   *
   * @return  Promise
   */
-    arrayBuffer() {
-        return consumeBody.call(this).then(function (buf) {
-            return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
-        });
-    },
+	arrayBuffer() {
+		return consumeBody.call(this).then(function (buf) {
+			return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
+		});
+	},
 
-    /**
+	/**
   * Return raw response as Blob
   *
   * @return Promise
   */
-    blob() {
-        let ct = this.headers && this.headers.get('content-type') || '';
-        return consumeBody.call(this).then(function (buf) {
-            return Object.assign(
-            // Prevent copying
-            new Blob([], {
-                type: ct.toLowerCase()
-            }), {
-                [BUFFER]: buf
-            });
-        });
-    },
+	blob() {
+		let ct = this.headers && this.headers.get('content-type') || '';
+		return consumeBody.call(this).then(function (buf) {
+			return Object.assign(
+			// Prevent copying
+			new Blob([], {
+				type: ct.toLowerCase()
+			}), {
+				[BUFFER]: buf
+			});
+		});
+	},
 
-    /**
+	/**
   * Decode response as json
   *
   * @return  Promise
   */
-    json() {
-        var _this2 = this;
+	json() {
+		var _this2 = this;
 
-        return consumeBody.call(this).then(function (buffer) {
-            try {
-                return JSON.parse(buffer.toString());
-            } catch (err) {
-                return Body.Promise.reject(new FetchError(`invalid json response body at ${_this2.url} reason: ${err.message}`, 'invalid-json'));
-            }
-        });
-    },
+		return consumeBody.call(this).then(function (buffer) {
+			try {
+				return JSON.parse(buffer.toString());
+			} catch (err) {
+				return Body.Promise.reject(new FetchError(`invalid json response body at ${_this2.url} reason: ${err.message}`, 'invalid-json'));
+			}
+		});
+	},
 
-    /**
+	/**
   * Decode response as text
   *
   * @return  Promise
   */
-    text() {
-        return consumeBody.call(this).then(function (buffer) {
-            return buffer.toString();
-        });
-    },
+	text() {
+		return consumeBody.call(this).then(function (buffer) {
+			return buffer.toString();
+		});
+	},
 
-    /**
+	/**
   * Decode response as buffer (non-spec api)
   *
   * @return  Promise
   */
-    buffer() {
-        return consumeBody.call(this);
-    },
+	buffer() {
+		return consumeBody.call(this);
+	},
 
-    /**
+	/**
   * Decode response as text, while automatically detecting the encoding and
   * trying to decode to UTF-8 (non-spec api)
   *
   * @return  Promise
   */
-    textConverted() {
-        var _this3 = this;
+	textConverted() {
+		var _this3 = this;
 
-        return consumeBody.call(this).then(function (buffer) {
-            return convertBody(buffer, _this3.headers);
-        });
-    }
+		return consumeBody.call(this).then(function (buffer) {
+			return convertBody(buffer, _this3.headers);
+		});
+	}
 };
 
 // In browsers, all properties are enumerable.
 Object.defineProperties(Body.prototype, {
-    body: { enumerable: true },
-    bodyUsed: { enumerable: true },
-    arrayBuffer: { enumerable: true },
-    blob: { enumerable: true },
-    json: { enumerable: true },
-    text: { enumerable: true }
+	body: { enumerable: true },
+	bodyUsed: { enumerable: true },
+	arrayBuffer: { enumerable: true },
+	blob: { enumerable: true },
+	json: { enumerable: true },
+	text: { enumerable: true }
 });
 
 Body.mixIn = function (proto) {
-    for (const name of Object.getOwnPropertyNames(Body.prototype)) {
-        // istanbul ignore else: future proof
-        if (!(name in proto)) {
-            const desc = Object.getOwnPropertyDescriptor(Body.prototype, name);
-            Object.defineProperty(proto, name, desc);
-        }
-    }
+	for (const name of Object.getOwnPropertyNames(Body.prototype)) {
+		// istanbul ignore else: future proof
+		if (!(name in proto)) {
+			const desc = Object.getOwnPropertyDescriptor(Body.prototype, name);
+			Object.defineProperty(proto, name, desc);
+		}
+	}
 };
 
 /**
@@ -5660,99 +5660,99 @@ Body.mixIn = function (proto) {
  * @return  Promise
  */
 function consumeBody() {
-    var _this4 = this;
+	var _this4 = this;
 
-    if (this[INTERNALS].disturbed) {
-        return Body.Promise.reject(new TypeError(`body used already for: ${this.url}`));
-    }
+	if (this[INTERNALS].disturbed) {
+		return Body.Promise.reject(new TypeError(`body used already for: ${this.url}`));
+	}
 
-    this[INTERNALS].disturbed = true;
+	this[INTERNALS].disturbed = true;
 
-    if (this[INTERNALS].error) {
-        return Body.Promise.reject(this[INTERNALS].error);
-    }
+	if (this[INTERNALS].error) {
+		return Body.Promise.reject(this[INTERNALS].error);
+	}
 
-    let body = this.body;
+	let body = this.body;
 
-    // body is null
-    if (body === null) {
-        return Body.Promise.resolve(Buffer.alloc(0));
-    }
+	// body is null
+	if (body === null) {
+		return Body.Promise.resolve(Buffer.alloc(0));
+	}
 
-    // body is blob
-    if (isBlob(body)) {
-        body = body.stream();
-    }
+	// body is blob
+	if (isBlob(body)) {
+		body = body.stream();
+	}
 
-    // body is buffer
-    if (Buffer.isBuffer(body)) {
-        return Body.Promise.resolve(body);
-    }
+	// body is buffer
+	if (Buffer.isBuffer(body)) {
+		return Body.Promise.resolve(body);
+	}
 
-    // istanbul ignore if: should never happen
-    if (!(body instanceof Stream)) {
-        return Body.Promise.resolve(Buffer.alloc(0));
-    }
+	// istanbul ignore if: should never happen
+	if (!(body instanceof Stream)) {
+		return Body.Promise.resolve(Buffer.alloc(0));
+	}
 
-    // body is stream
-    // get ready to actually consume the body
-    let accum = [];
-    let accumBytes = 0;
-    let abort = false;
+	// body is stream
+	// get ready to actually consume the body
+	let accum = [];
+	let accumBytes = 0;
+	let abort = false;
 
-    return new Body.Promise(function (resolve, reject) {
-        let resTimeout;
+	return new Body.Promise(function (resolve, reject) {
+		let resTimeout;
 
-        // allow timeout on slow response body
-        if (_this4.timeout) {
-            resTimeout = setTimeout(function () {
-                abort = true;
-                reject(new FetchError(`Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`, 'body-timeout'));
-            }, _this4.timeout);
-        }
+		// allow timeout on slow response body
+		if (_this4.timeout) {
+			resTimeout = setTimeout(function () {
+				abort = true;
+				reject(new FetchError(`Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`, 'body-timeout'));
+			}, _this4.timeout);
+		}
 
-        // handle stream errors
-        body.on('error', function (err) {
-            if (err.name === 'AbortError') {
-                // if the request was aborted, reject with this Error
-                abort = true;
-                reject(err);
-            } else {
-                // other errors, such as incorrect content-encoding
-                reject(new FetchError(`Invalid response body while trying to fetch ${_this4.url}: ${err.message}`, 'system', err));
-            }
-        });
+		// handle stream errors
+		body.on('error', function (err) {
+			if (err.name === 'AbortError') {
+				// if the request was aborted, reject with this Error
+				abort = true;
+				reject(err);
+			} else {
+				// other errors, such as incorrect content-encoding
+				reject(new FetchError(`Invalid response body while trying to fetch ${_this4.url}: ${err.message}`, 'system', err));
+			}
+		});
 
-        body.on('data', function (chunk) {
-            if (abort || chunk === null) {
-                return;
-            }
+		body.on('data', function (chunk) {
+			if (abort || chunk === null) {
+				return;
+			}
 
-            if (_this4.size && accumBytes + chunk.length > _this4.size) {
-                abort = true;
-                reject(new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size'));
-                return;
-            }
+			if (_this4.size && accumBytes + chunk.length > _this4.size) {
+				abort = true;
+				reject(new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size'));
+				return;
+			}
 
-            accumBytes += chunk.length;
-            accum.push(chunk);
-        });
+			accumBytes += chunk.length;
+			accum.push(chunk);
+		});
 
-        body.on('end', function () {
-            if (abort) {
-                return;
-            }
+		body.on('end', function () {
+			if (abort) {
+				return;
+			}
 
-            clearTimeout(resTimeout);
+			clearTimeout(resTimeout);
 
-            try {
-                resolve(Buffer.concat(accum, accumBytes));
-            } catch (err) {
-                // handle streams that have accumulated too much data (issue #414)
-                reject(new FetchError(`Could not create Buffer from response body for ${_this4.url}: ${err.message}`, 'system', err));
-            }
-        });
-    });
+			try {
+				resolve(Buffer.concat(accum, accumBytes));
+			} catch (err) {
+				// handle streams that have accumulated too much data (issue #414)
+				reject(new FetchError(`Could not create Buffer from response body for ${_this4.url}: ${err.message}`, 'system', err));
+			}
+		});
+	});
 }
 
 /**
@@ -5764,54 +5764,54 @@ function consumeBody() {
  * @return  String
  */
 function convertBody(buffer, headers) {
-    if (typeof convert !== 'function') {
-        throw new Error('The package `encoding` must be installed to use the textConverted() function');
-    }
+	if (typeof convert !== 'function') {
+		throw new Error('The package `encoding` must be installed to use the textConverted() function');
+	}
 
-    const ct = headers.get('content-type');
-    let charset = 'utf-8';
-    let res, str;
+	const ct = headers.get('content-type');
+	let charset = 'utf-8';
+	let res, str;
 
-    // header
-    if (ct) {
-        res = /charset=([^;]*)/i.exec(ct);
-    }
+	// header
+	if (ct) {
+		res = /charset=([^;]*)/i.exec(ct);
+	}
 
-    // no charset in content type, peek at response body for at most 1024 bytes
-    str = buffer.slice(0, 1024).toString();
+	// no charset in content type, peek at response body for at most 1024 bytes
+	str = buffer.slice(0, 1024).toString();
 
-    // html5
-    if (!res && str) {
-        res = /<meta.+?charset=(['"])(.+?)\1/i.exec(str);
-    }
+	// html5
+	if (!res && str) {
+		res = /<meta.+?charset=(['"])(.+?)\1/i.exec(str);
+	}
 
-    // html4
-    if (!res && str) {
-        res = /<meta[\s]+?http-equiv=(['"])content-type\1[\s]+?content=(['"])(.+?)\2/i.exec(str);
+	// html4
+	if (!res && str) {
+		res = /<meta[\s]+?http-equiv=(['"])content-type\1[\s]+?content=(['"])(.+?)\2/i.exec(str);
 
-        if (res) {
-            res = /charset=(.*)/i.exec(res.pop());
-        }
-    }
+		if (res) {
+			res = /charset=(.*)/i.exec(res.pop());
+		}
+	}
 
-    // xml
-    if (!res && str) {
-        res = /<\?xml.+?encoding=(['"])(.+?)\1/i.exec(str);
-    }
+	// xml
+	if (!res && str) {
+		res = /<\?xml.+?encoding=(['"])(.+?)\1/i.exec(str);
+	}
 
-    // found charset
-    if (res) {
-        charset = res.pop();
+	// found charset
+	if (res) {
+		charset = res.pop();
 
-        // prevent decode issues when sites use incorrect encoding
-        // ref: https://hsivonen.fi/encoding-menu/
-        if (charset === 'gb2312' || charset === 'gbk') {
-            charset = 'gb18030';
-        }
-    }
+		// prevent decode issues when sites use incorrect encoding
+		// ref: https://hsivonen.fi/encoding-menu/
+		if (charset === 'gb2312' || charset === 'gbk') {
+			charset = 'gb18030';
+		}
+	}
 
-    // turn raw buffers into a single utf-8 buffer
-    return convert(buffer, 'UTF-8', charset).toString();
+	// turn raw buffers into a single utf-8 buffer
+	return convert(buffer, 'UTF-8', charset).toString();
 }
 
 /**
@@ -5822,13 +5822,13 @@ function convertBody(buffer, headers) {
  * @return  String
  */
 function isURLSearchParams(obj) {
-    // Duck-typing as a necessary condition.
-    if (typeof obj !== 'object' || typeof obj.append !== 'function' || typeof obj.delete !== 'function' || typeof obj.get !== 'function' || typeof obj.getAll !== 'function' || typeof obj.has !== 'function' || typeof obj.set !== 'function') {
-        return false;
-    }
+	// Duck-typing as a necessary condition.
+	if (typeof obj !== 'object' || typeof obj.append !== 'function' || typeof obj.delete !== 'function' || typeof obj.get !== 'function' || typeof obj.getAll !== 'function' || typeof obj.has !== 'function' || typeof obj.set !== 'function') {
+		return false;
+	}
 
-    // Brand-checking and more duck-typing as optional condition.
-    return obj.constructor.name === 'URLSearchParams' || Object.prototype.toString.call(obj) === '[object URLSearchParams]' || typeof obj.sort === 'function';
+	// Brand-checking and more duck-typing as optional condition.
+	return obj.constructor.name === 'URLSearchParams' || Object.prototype.toString.call(obj) === '[object URLSearchParams]' || typeof obj.sort === 'function';
 }
 
 /**
@@ -5837,7 +5837,7 @@ function isURLSearchParams(obj) {
  * @return {boolean}
  */
 function isBlob(obj) {
-    return typeof obj === 'object' && typeof obj.arrayBuffer === 'function' && typeof obj.type === 'string' && typeof obj.stream === 'function' && typeof obj.constructor === 'function' && typeof obj.constructor.name === 'string' && /^(Blob|File)$/.test(obj.constructor.name) && /^(Blob|File)$/.test(obj[Symbol.toStringTag]);
+	return typeof obj === 'object' && typeof obj.arrayBuffer === 'function' && typeof obj.type === 'string' && typeof obj.stream === 'function' && typeof obj.constructor === 'function' && typeof obj.constructor.name === 'string' && /^(Blob|File)$/.test(obj.constructor.name) && /^(Blob|File)$/.test(obj[Symbol.toStringTag]);
 }
 
 /**
@@ -5847,28 +5847,28 @@ function isBlob(obj) {
  * @return  Mixed
  */
 function clone(instance) {
-    let p1, p2;
-    let body = instance.body;
+	let p1, p2;
+	let body = instance.body;
 
-    // don't allow cloning a used body
-    if (instance.bodyUsed) {
-        throw new Error('cannot clone body after it is used');
-    }
+	// don't allow cloning a used body
+	if (instance.bodyUsed) {
+		throw new Error('cannot clone body after it is used');
+	}
 
-    // check that body is a stream and not form-data object
-    // note: we can't clone the form-data object without having it as a dependency
-    if (body instanceof Stream && typeof body.getBoundary !== 'function') {
-        // tee instance body
-        p1 = new PassThrough();
-        p2 = new PassThrough();
-        body.pipe(p1);
-        body.pipe(p2);
-        // set instance body to teed body and return the other teed body
-        instance[INTERNALS].body = p1;
-        body = p2;
-    }
+	// check that body is a stream and not form-data object
+	// note: we can't clone the form-data object without having it as a dependency
+	if (body instanceof Stream && typeof body.getBoundary !== 'function') {
+		// tee instance body
+		p1 = new PassThrough();
+		p2 = new PassThrough();
+		body.pipe(p1);
+		body.pipe(p2);
+		// set instance body to teed body and return the other teed body
+		instance[INTERNALS].body = p1;
+		body = p2;
+	}
 
-    return body;
+	return body;
 }
 
 /**
@@ -5881,38 +5881,38 @@ function clone(instance) {
  * @param   Mixed  instance  Any options.body input
  */
 function extractContentType(body) {
-    if (body === null) {
-        // body is null
-        return null;
-    } else if (typeof body === 'string') {
-        // body is string
-        return 'text/plain;charset=UTF-8';
-    } else if (isURLSearchParams(body)) {
-        // body is a URLSearchParams
-        return 'application/x-www-form-urlencoded;charset=UTF-8';
-    } else if (isBlob(body)) {
-        // body is blob
-        return body.type || null;
-    } else if (Buffer.isBuffer(body)) {
-        // body is buffer
-        return null;
-    } else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
-        // body is ArrayBuffer
-        return null;
-    } else if (ArrayBuffer.isView(body)) {
-        // body is ArrayBufferView
-        return null;
-    } else if (typeof body.getBoundary === 'function') {
-        // detect form data input from form-data module
-        return `multipart/form-data;boundary=${body.getBoundary()}`;
-    } else if (body instanceof Stream) {
-        // body is stream
-        // can't really do much about this
-        return null;
-    } else {
-        // Body constructor defaults other things to string
-        return 'text/plain;charset=UTF-8';
-    }
+	if (body === null) {
+		// body is null
+		return null;
+	} else if (typeof body === 'string') {
+		// body is string
+		return 'text/plain;charset=UTF-8';
+	} else if (isURLSearchParams(body)) {
+		// body is a URLSearchParams
+		return 'application/x-www-form-urlencoded;charset=UTF-8';
+	} else if (isBlob(body)) {
+		// body is blob
+		return body.type || null;
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		return null;
+	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is ArrayBuffer
+		return null;
+	} else if (ArrayBuffer.isView(body)) {
+		// body is ArrayBufferView
+		return null;
+	} else if (typeof body.getBoundary === 'function') {
+		// detect form data input from form-data module
+		return `multipart/form-data;boundary=${body.getBoundary()}`;
+	} else if (body instanceof Stream) {
+		// body is stream
+		// can't really do much about this
+		return null;
+	} else {
+		// Body constructor defaults other things to string
+		return 'text/plain;charset=UTF-8';
+	}
 }
 
 /**
@@ -5925,29 +5925,29 @@ function extractContentType(body) {
  * @return  Number?            Number of bytes, or null if not possible
  */
 function getTotalBytes(instance) {
-    const body = instance.body;
+	const body = instance.body;
 
 
-    if (body === null) {
-        // body is null
-        return 0;
-    } else if (isBlob(body)) {
-        return body.size;
-    } else if (Buffer.isBuffer(body)) {
-        // body is buffer
-        return body.length;
-    } else if (body && typeof body.getLengthSync === 'function') {
-        // detect form data input from form-data module
-        if (body._lengthRetrievers && body._lengthRetrievers.length == 0 || // 1.x
-        body.hasKnownLength && body.hasKnownLength()) {
-            // 2.x
-            return body.getLengthSync();
-        }
-        return null;
-    } else {
-        // body is stream
-        return null;
-    }
+	if (body === null) {
+		// body is null
+		return 0;
+	} else if (isBlob(body)) {
+		return body.size;
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		return body.length;
+	} else if (body && typeof body.getLengthSync === 'function') {
+		// detect form data input from form-data module
+		if (body._lengthRetrievers && body._lengthRetrievers.length == 0 || // 1.x
+		body.hasKnownLength && body.hasKnownLength()) {
+			// 2.x
+			return body.getLengthSync();
+		}
+		return null;
+	} else {
+		// body is stream
+		return null;
+	}
 }
 
 /**
@@ -5957,22 +5957,22 @@ function getTotalBytes(instance) {
  * @return  Void
  */
 function writeToStream(dest, instance) {
-    const body = instance.body;
+	const body = instance.body;
 
 
-    if (body === null) {
-        // body is null
-        dest.end();
-    } else if (isBlob(body)) {
-        body.stream().pipe(dest);
-    } else if (Buffer.isBuffer(body)) {
-        // body is buffer
-        dest.write(body);
-        dest.end();
-    } else {
-        // body is stream
-        body.pipe(dest);
-    }
+	if (body === null) {
+		// body is null
+		dest.end();
+	} else if (isBlob(body)) {
+		body.stream().pipe(dest);
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		dest.write(body);
+		dest.end();
+	} else {
+		// body is stream
+		body.pipe(dest);
+	}
 }
 
 // expose Promise
@@ -5988,17 +5988,17 @@ const invalidTokenRegex = /[^\^_`a-zA-Z\-0-9!#$%&'*+.|~]/;
 const invalidHeaderCharRegex = /[^\t\x20-\x7e\x80-\xff]/;
 
 function validateName(name) {
-    name = `${name}`;
-    if (invalidTokenRegex.test(name) || name === '') {
-        throw new TypeError(`${name} is not a legal HTTP header name`);
-    }
+	name = `${name}`;
+	if (invalidTokenRegex.test(name) || name === '') {
+		throw new TypeError(`${name} is not a legal HTTP header name`);
+	}
 }
 
 function validateValue(value) {
-    value = `${value}`;
-    if (invalidHeaderCharRegex.test(value)) {
-        throw new TypeError(`${value} is not a legal HTTP header value`);
-    }
+	value = `${value}`;
+	if (invalidHeaderCharRegex.test(value)) {
+		throw new TypeError(`${value} is not a legal HTTP header value`);
+	}
 }
 
 /**
@@ -6010,300 +6010,300 @@ function validateValue(value) {
  * @return  String|Undefined
  */
 function find(map, name) {
-    name = name.toLowerCase();
-    for (const key in map) {
-        if (key.toLowerCase() === name) {
-            return key;
-        }
-    }
-    return undefined;
+	name = name.toLowerCase();
+	for (const key in map) {
+		if (key.toLowerCase() === name) {
+			return key;
+		}
+	}
+	return undefined;
 }
 
 const MAP = Symbol('map');
 class Headers {
-    /**
+	/**
   * Headers class
   *
   * @param   Object  headers  Response headers
   * @return  Void
   */
-    constructor() {
-        let init = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+	constructor() {
+		let init = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
 
-        this[MAP] = Object.create(null);
+		this[MAP] = Object.create(null);
 
-        if (init instanceof Headers) {
-            const rawHeaders = init.raw();
-            const headerNames = Object.keys(rawHeaders);
+		if (init instanceof Headers) {
+			const rawHeaders = init.raw();
+			const headerNames = Object.keys(rawHeaders);
 
-            for (const headerName of headerNames) {
-                for (const value of rawHeaders[headerName]) {
-                    this.append(headerName, value);
-                }
-            }
+			for (const headerName of headerNames) {
+				for (const value of rawHeaders[headerName]) {
+					this.append(headerName, value);
+				}
+			}
 
-            return;
-        }
+			return;
+		}
 
-        // We don't worry about converting prop to ByteString here as append()
-        // will handle it.
-        if (init == null) ; else if (typeof init === 'object') {
-            const method = init[Symbol.iterator];
-            if (method != null) {
-                if (typeof method !== 'function') {
-                    throw new TypeError('Header pairs must be iterable');
-                }
+		// We don't worry about converting prop to ByteString here as append()
+		// will handle it.
+		if (init == null) ; else if (typeof init === 'object') {
+			const method = init[Symbol.iterator];
+			if (method != null) {
+				if (typeof method !== 'function') {
+					throw new TypeError('Header pairs must be iterable');
+				}
 
-                // sequence<sequence<ByteString>>
-                // Note: per spec we have to first exhaust the lists then process them
-                const pairs = [];
-                for (const pair of init) {
-                    if (typeof pair !== 'object' || typeof pair[Symbol.iterator] !== 'function') {
-                        throw new TypeError('Each header pair must be iterable');
-                    }
-                    pairs.push(Array.from(pair));
-                }
+				// sequence<sequence<ByteString>>
+				// Note: per spec we have to first exhaust the lists then process them
+				const pairs = [];
+				for (const pair of init) {
+					if (typeof pair !== 'object' || typeof pair[Symbol.iterator] !== 'function') {
+						throw new TypeError('Each header pair must be iterable');
+					}
+					pairs.push(Array.from(pair));
+				}
 
-                for (const pair of pairs) {
-                    if (pair.length !== 2) {
-                        throw new TypeError('Each header pair must be a name/value tuple');
-                    }
-                    this.append(pair[0], pair[1]);
-                }
-            } else {
-                // record<ByteString, ByteString>
-                for (const key of Object.keys(init)) {
-                    const value = init[key];
-                    this.append(key, value);
-                }
-            }
-        } else {
-            throw new TypeError('Provided initializer must be an object');
-        }
-    }
+				for (const pair of pairs) {
+					if (pair.length !== 2) {
+						throw new TypeError('Each header pair must be a name/value tuple');
+					}
+					this.append(pair[0], pair[1]);
+				}
+			} else {
+				// record<ByteString, ByteString>
+				for (const key of Object.keys(init)) {
+					const value = init[key];
+					this.append(key, value);
+				}
+			}
+		} else {
+			throw new TypeError('Provided initializer must be an object');
+		}
+	}
 
-    /**
+	/**
   * Return combined header value given name
   *
   * @param   String  name  Header name
   * @return  Mixed
   */
-    get(name) {
-        name = `${name}`;
-        validateName(name);
-        const key = find(this[MAP], name);
-        if (key === undefined) {
-            return null;
-        }
+	get(name) {
+		name = `${name}`;
+		validateName(name);
+		const key = find(this[MAP], name);
+		if (key === undefined) {
+			return null;
+		}
 
-        return this[MAP][key].join(', ');
-    }
+		return this[MAP][key].join(', ');
+	}
 
-    /**
+	/**
   * Iterate over all headers
   *
   * @param   Function  callback  Executed for each item with parameters (value, name, thisArg)
   * @param   Boolean   thisArg   `this` context for callback function
   * @return  Void
   */
-    forEach(callback) {
-        let thisArg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+	forEach(callback) {
+		let thisArg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
 
-        let pairs = getHeaders(this);
-        let i = 0;
-        while (i < pairs.length) {
-            var _pairs$i = pairs[i];
-            const name = _pairs$i[0],
-                  value = _pairs$i[1];
+		let pairs = getHeaders(this);
+		let i = 0;
+		while (i < pairs.length) {
+			var _pairs$i = pairs[i];
+			const name = _pairs$i[0],
+			      value = _pairs$i[1];
 
-            callback.call(thisArg, value, name, this);
-            pairs = getHeaders(this);
-            i++;
-        }
-    }
+			callback.call(thisArg, value, name, this);
+			pairs = getHeaders(this);
+			i++;
+		}
+	}
 
-    /**
+	/**
   * Overwrite header values given name
   *
   * @param   String  name   Header name
   * @param   String  value  Header value
   * @return  Void
   */
-    set(name, value) {
-        name = `${name}`;
-        value = `${value}`;
-        validateName(name);
-        validateValue(value);
-        const key = find(this[MAP], name);
-        this[MAP][key !== undefined ? key : name] = [value];
-    }
+	set(name, value) {
+		name = `${name}`;
+		value = `${value}`;
+		validateName(name);
+		validateValue(value);
+		const key = find(this[MAP], name);
+		this[MAP][key !== undefined ? key : name] = [value];
+	}
 
-    /**
+	/**
   * Append a value onto existing header
   *
   * @param   String  name   Header name
   * @param   String  value  Header value
   * @return  Void
   */
-    append(name, value) {
-        name = `${name}`;
-        value = `${value}`;
-        validateName(name);
-        validateValue(value);
-        const key = find(this[MAP], name);
-        if (key !== undefined) {
-            this[MAP][key].push(value);
-        } else {
-            this[MAP][name] = [value];
-        }
-    }
+	append(name, value) {
+		name = `${name}`;
+		value = `${value}`;
+		validateName(name);
+		validateValue(value);
+		const key = find(this[MAP], name);
+		if (key !== undefined) {
+			this[MAP][key].push(value);
+		} else {
+			this[MAP][name] = [value];
+		}
+	}
 
-    /**
+	/**
   * Check for header name existence
   *
   * @param   String   name  Header name
   * @return  Boolean
   */
-    has(name) {
-        name = `${name}`;
-        validateName(name);
-        return find(this[MAP], name) !== undefined;
-    }
+	has(name) {
+		name = `${name}`;
+		validateName(name);
+		return find(this[MAP], name) !== undefined;
+	}
 
-    /**
+	/**
   * Delete all header values given name
   *
   * @param   String  name  Header name
   * @return  Void
   */
-    delete(name) {
-        name = `${name}`;
-        validateName(name);
-        const key = find(this[MAP], name);
-        if (key !== undefined) {
-            delete this[MAP][key];
-        }
-    }
+	delete(name) {
+		name = `${name}`;
+		validateName(name);
+		const key = find(this[MAP], name);
+		if (key !== undefined) {
+			delete this[MAP][key];
+		}
+	}
 
-    /**
+	/**
   * Return raw headers (non-spec api)
   *
   * @return  Object
   */
-    raw() {
-        return this[MAP];
-    }
+	raw() {
+		return this[MAP];
+	}
 
-    /**
+	/**
   * Get an iterator on keys.
   *
   * @return  Iterator
   */
-    keys() {
-        return createHeadersIterator(this, 'key');
-    }
+	keys() {
+		return createHeadersIterator(this, 'key');
+	}
 
-    /**
+	/**
   * Get an iterator on values.
   *
   * @return  Iterator
   */
-    values() {
-        return createHeadersIterator(this, 'value');
-    }
+	values() {
+		return createHeadersIterator(this, 'value');
+	}
 
-    /**
+	/**
   * Get an iterator on entries.
   *
   * This is the default iterator of the Headers object.
   *
   * @return  Iterator
   */
-    [Symbol.iterator]() {
-        return createHeadersIterator(this, 'key+value');
-    }
+	[Symbol.iterator]() {
+		return createHeadersIterator(this, 'key+value');
+	}
 }
 Headers.prototype.entries = Headers.prototype[Symbol.iterator];
 
 Object.defineProperty(Headers.prototype, Symbol.toStringTag, {
-    value: 'Headers',
-    writable: false,
-    enumerable: false,
-    configurable: true
+	value: 'Headers',
+	writable: false,
+	enumerable: false,
+	configurable: true
 });
 
 Object.defineProperties(Headers.prototype, {
-    get: { enumerable: true },
-    forEach: { enumerable: true },
-    set: { enumerable: true },
-    append: { enumerable: true },
-    has: { enumerable: true },
-    delete: { enumerable: true },
-    keys: { enumerable: true },
-    values: { enumerable: true },
-    entries: { enumerable: true }
+	get: { enumerable: true },
+	forEach: { enumerable: true },
+	set: { enumerable: true },
+	append: { enumerable: true },
+	has: { enumerable: true },
+	delete: { enumerable: true },
+	keys: { enumerable: true },
+	values: { enumerable: true },
+	entries: { enumerable: true }
 });
 
 function getHeaders(headers) {
-    let kind = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'key+value';
+	let kind = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'key+value';
 
-    const keys = Object.keys(headers[MAP]).sort();
-    return keys.map(kind === 'key' ? function (k) {
-        return k.toLowerCase();
-    } : kind === 'value' ? function (k) {
-        return headers[MAP][k].join(', ');
-    } : function (k) {
-        return [k.toLowerCase(), headers[MAP][k].join(', ')];
-    });
+	const keys = Object.keys(headers[MAP]).sort();
+	return keys.map(kind === 'key' ? function (k) {
+		return k.toLowerCase();
+	} : kind === 'value' ? function (k) {
+		return headers[MAP][k].join(', ');
+	} : function (k) {
+		return [k.toLowerCase(), headers[MAP][k].join(', ')];
+	});
 }
 
 const INTERNAL = Symbol('internal');
 
 function createHeadersIterator(target, kind) {
-    const iterator = Object.create(HeadersIteratorPrototype);
-    iterator[INTERNAL] = {
-        target,
-        kind,
-        index: 0
-    };
-    return iterator;
+	const iterator = Object.create(HeadersIteratorPrototype);
+	iterator[INTERNAL] = {
+		target,
+		kind,
+		index: 0
+	};
+	return iterator;
 }
 
 const HeadersIteratorPrototype = Object.setPrototypeOf({
-    next() {
-        // istanbul ignore if
-        if (!this || Object.getPrototypeOf(this) !== HeadersIteratorPrototype) {
-            throw new TypeError('Value of `this` is not a HeadersIterator');
-        }
+	next() {
+		// istanbul ignore if
+		if (!this || Object.getPrototypeOf(this) !== HeadersIteratorPrototype) {
+			throw new TypeError('Value of `this` is not a HeadersIterator');
+		}
 
-        var _INTERNAL = this[INTERNAL];
-        const target = _INTERNAL.target,
-              kind = _INTERNAL.kind,
-              index = _INTERNAL.index;
+		var _INTERNAL = this[INTERNAL];
+		const target = _INTERNAL.target,
+		      kind = _INTERNAL.kind,
+		      index = _INTERNAL.index;
 
-        const values = getHeaders(target, kind);
-        const len = values.length;
-        if (index >= len) {
-            return {
-                value: undefined,
-                done: true
-            };
-        }
+		const values = getHeaders(target, kind);
+		const len = values.length;
+		if (index >= len) {
+			return {
+				value: undefined,
+				done: true
+			};
+		}
 
-        this[INTERNAL].index = index + 1;
+		this[INTERNAL].index = index + 1;
 
-        return {
-            value: values[index],
-            done: false
-        };
-    }
+		return {
+			value: values[index],
+			done: false
+		};
+	}
 }, Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]())));
 
 Object.defineProperty(HeadersIteratorPrototype, Symbol.toStringTag, {
-    value: 'HeadersIterator',
-    writable: false,
-    enumerable: false,
-    configurable: true
+	value: 'HeadersIterator',
+	writable: false,
+	enumerable: false,
+	configurable: true
 });
 
 /**
@@ -6313,16 +6313,16 @@ Object.defineProperty(HeadersIteratorPrototype, Symbol.toStringTag, {
  * @return  Object
  */
 function exportNodeCompatibleHeaders(headers) {
-    const obj = Object.assign({ __proto__: null }, headers[MAP]);
+	const obj = Object.assign({ __proto__: null }, headers[MAP]);
 
-    // http.request() only supports string as Host header. This hack makes
-    // specifying custom Host header possible.
-    const hostHeaderKey = find(headers[MAP], 'Host');
-    if (hostHeaderKey !== undefined) {
-        obj[hostHeaderKey] = obj[hostHeaderKey][0];
-    }
+	// http.request() only supports string as Host header. This hack makes
+	// specifying custom Host header possible.
+	const hostHeaderKey = find(headers[MAP], 'Host');
+	if (hostHeaderKey !== undefined) {
+		obj[hostHeaderKey] = obj[hostHeaderKey][0];
+	}
 
-    return obj;
+	return obj;
 }
 
 /**
@@ -6333,27 +6333,27 @@ function exportNodeCompatibleHeaders(headers) {
  * @return  Headers
  */
 function createHeadersLenient(obj) {
-    const headers = new Headers();
-    for (const name of Object.keys(obj)) {
-        if (invalidTokenRegex.test(name)) {
-            continue;
-        }
-        if (Array.isArray(obj[name])) {
-            for (const val of obj[name]) {
-                if (invalidHeaderCharRegex.test(val)) {
-                    continue;
-                }
-                if (headers[MAP][name] === undefined) {
-                    headers[MAP][name] = [val];
-                } else {
-                    headers[MAP][name].push(val);
-                }
-            }
-        } else if (!invalidHeaderCharRegex.test(obj[name])) {
-            headers[MAP][name] = [obj[name]];
-        }
-    }
-    return headers;
+	const headers = new Headers();
+	for (const name of Object.keys(obj)) {
+		if (invalidTokenRegex.test(name)) {
+			continue;
+		}
+		if (Array.isArray(obj[name])) {
+			for (const val of obj[name]) {
+				if (invalidHeaderCharRegex.test(val)) {
+					continue;
+				}
+				if (headers[MAP][name] === undefined) {
+					headers[MAP][name] = [val];
+				} else {
+					headers[MAP][name].push(val);
+				}
+			}
+		} else if (!invalidHeaderCharRegex.test(obj[name])) {
+			headers[MAP][name] = [obj[name]];
+		}
+	}
+	return headers;
 }
 
 const INTERNALS$1 = Symbol('Response internals');
@@ -6369,92 +6369,92 @@ const STATUS_CODES = http.STATUS_CODES;
  * @return  Void
  */
 class Response {
-    constructor() {
-        let body = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-        let opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	constructor() {
+		let body = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+		let opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        Body.call(this, body, opts);
+		Body.call(this, body, opts);
 
-        const status = opts.status || 200;
-        const headers = new Headers(opts.headers);
+		const status = opts.status || 200;
+		const headers = new Headers(opts.headers);
 
-        if (body != null && !headers.has('Content-Type')) {
-            const contentType = extractContentType(body);
-            if (contentType) {
-                headers.append('Content-Type', contentType);
-            }
-        }
+		if (body != null && !headers.has('Content-Type')) {
+			const contentType = extractContentType(body);
+			if (contentType) {
+				headers.append('Content-Type', contentType);
+			}
+		}
 
-        this[INTERNALS$1] = {
-            url: opts.url,
-            status,
-            statusText: opts.statusText || STATUS_CODES[status],
-            headers,
-            counter: opts.counter
-        };
-    }
+		this[INTERNALS$1] = {
+			url: opts.url,
+			status,
+			statusText: opts.statusText || STATUS_CODES[status],
+			headers,
+			counter: opts.counter
+		};
+	}
 
-    get url() {
-        return this[INTERNALS$1].url || '';
-    }
+	get url() {
+		return this[INTERNALS$1].url || '';
+	}
 
-    get status() {
-        return this[INTERNALS$1].status;
-    }
+	get status() {
+		return this[INTERNALS$1].status;
+	}
 
-    /**
+	/**
   * Convenience property representing if the request ended normally
   */
-    get ok() {
-        return this[INTERNALS$1].status >= 200 && this[INTERNALS$1].status < 300;
-    }
+	get ok() {
+		return this[INTERNALS$1].status >= 200 && this[INTERNALS$1].status < 300;
+	}
 
-    get redirected() {
-        return this[INTERNALS$1].counter > 0;
-    }
+	get redirected() {
+		return this[INTERNALS$1].counter > 0;
+	}
 
-    get statusText() {
-        return this[INTERNALS$1].statusText;
-    }
+	get statusText() {
+		return this[INTERNALS$1].statusText;
+	}
 
-    get headers() {
-        return this[INTERNALS$1].headers;
-    }
+	get headers() {
+		return this[INTERNALS$1].headers;
+	}
 
-    /**
+	/**
   * Clone this response
   *
   * @return  Response
   */
-    clone() {
-        return new Response(clone(this), {
-            url: this.url,
-            status: this.status,
-            statusText: this.statusText,
-            headers: this.headers,
-            ok: this.ok,
-            redirected: this.redirected
-        });
-    }
+	clone() {
+		return new Response(clone(this), {
+			url: this.url,
+			status: this.status,
+			statusText: this.statusText,
+			headers: this.headers,
+			ok: this.ok,
+			redirected: this.redirected
+		});
+	}
 }
 
 Body.mixIn(Response.prototype);
 
 Object.defineProperties(Response.prototype, {
-    url: { enumerable: true },
-    status: { enumerable: true },
-    ok: { enumerable: true },
-    redirected: { enumerable: true },
-    statusText: { enumerable: true },
-    headers: { enumerable: true },
-    clone: { enumerable: true }
+	url: { enumerable: true },
+	status: { enumerable: true },
+	ok: { enumerable: true },
+	redirected: { enumerable: true },
+	statusText: { enumerable: true },
+	headers: { enumerable: true },
+	clone: { enumerable: true }
 });
 
 Object.defineProperty(Response.prototype, Symbol.toStringTag, {
-    value: 'Response',
-    writable: false,
-    enumerable: false,
-    configurable: true
+	value: 'Response',
+	writable: false,
+	enumerable: false,
+	configurable: true
 });
 
 const INTERNALS$2 = Symbol('Request internals');
@@ -6472,12 +6472,12 @@ const streamDestructionSupported = 'destroy' in Stream.Readable.prototype;
  * @return  Boolean
  */
 function isRequest(input) {
-    return typeof input === 'object' && typeof input[INTERNALS$2] === 'object';
+	return typeof input === 'object' && typeof input[INTERNALS$2] === 'object';
 }
 
 function isAbortSignal(signal) {
-    const proto = signal && typeof signal === 'object' && Object.getPrototypeOf(signal);
-    return !!(proto && proto.constructor.name === 'AbortSignal');
+	const proto = signal && typeof signal === 'object' && Object.getPrototypeOf(signal);
+	return !!(proto && proto.constructor.name === 'AbortSignal');
 }
 
 /**
@@ -6488,118 +6488,118 @@ function isAbortSignal(signal) {
  * @return  Void
  */
 class Request {
-    constructor(input) {
-        let init = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+	constructor(input) {
+		let init = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        let parsedURL;
+		let parsedURL;
 
-        // normalize input
-        if (!isRequest(input)) {
-            if (input && input.href) {
-                // in order to support Node.js' Url objects; though WHATWG's URL objects
-                // will fall into this branch also (since their `toString()` will return
-                // `href` property anyway)
-                parsedURL = parse_url(input.href);
-            } else {
-                // coerce input to a string before attempting to parse
-                parsedURL = parse_url(`${input}`);
-            }
-            input = {};
-        } else {
-            parsedURL = parse_url(input.url);
-        }
+		// normalize input
+		if (!isRequest(input)) {
+			if (input && input.href) {
+				// in order to support Node.js' Url objects; though WHATWG's URL objects
+				// will fall into this branch also (since their `toString()` will return
+				// `href` property anyway)
+				parsedURL = parse_url(input.href);
+			} else {
+				// coerce input to a string before attempting to parse
+				parsedURL = parse_url(`${input}`);
+			}
+			input = {};
+		} else {
+			parsedURL = parse_url(input.url);
+		}
 
-        let method = init.method || input.method || 'GET';
-        method = method.toUpperCase();
+		let method = init.method || input.method || 'GET';
+		method = method.toUpperCase();
 
-        if ((init.body != null || isRequest(input) && input.body !== null) && (method === 'GET' || method === 'HEAD')) {
-            throw new TypeError('Request with GET/HEAD method cannot have body');
-        }
+		if ((init.body != null || isRequest(input) && input.body !== null) && (method === 'GET' || method === 'HEAD')) {
+			throw new TypeError('Request with GET/HEAD method cannot have body');
+		}
 
-        let inputBody = init.body != null ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
+		let inputBody = init.body != null ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
 
-        Body.call(this, inputBody, {
-            timeout: init.timeout || input.timeout || 0,
-            size: init.size || input.size || 0
-        });
+		Body.call(this, inputBody, {
+			timeout: init.timeout || input.timeout || 0,
+			size: init.size || input.size || 0
+		});
 
-        const headers = new Headers(init.headers || input.headers || {});
+		const headers = new Headers(init.headers || input.headers || {});
 
-        if (inputBody != null && !headers.has('Content-Type')) {
-            const contentType = extractContentType(inputBody);
-            if (contentType) {
-                headers.append('Content-Type', contentType);
-            }
-        }
+		if (inputBody != null && !headers.has('Content-Type')) {
+			const contentType = extractContentType(inputBody);
+			if (contentType) {
+				headers.append('Content-Type', contentType);
+			}
+		}
 
-        let signal = isRequest(input) ? input.signal : null;
-        if ('signal' in init) signal = init.signal;
+		let signal = isRequest(input) ? input.signal : null;
+		if ('signal' in init) signal = init.signal;
 
-        if (signal != null && !isAbortSignal(signal)) {
-            throw new TypeError('Expected signal to be an instanceof AbortSignal');
-        }
+		if (signal != null && !isAbortSignal(signal)) {
+			throw new TypeError('Expected signal to be an instanceof AbortSignal');
+		}
 
-        this[INTERNALS$2] = {
-            method,
-            redirect: init.redirect || input.redirect || 'follow',
-            headers,
-            parsedURL,
-            signal
-        };
+		this[INTERNALS$2] = {
+			method,
+			redirect: init.redirect || input.redirect || 'follow',
+			headers,
+			parsedURL,
+			signal
+		};
 
-        // node-fetch-only options
-        this.follow = init.follow !== undefined ? init.follow : input.follow !== undefined ? input.follow : 20;
-        this.compress = init.compress !== undefined ? init.compress : input.compress !== undefined ? input.compress : true;
-        this.counter = init.counter || input.counter || 0;
-        this.agent = init.agent || input.agent;
-    }
+		// node-fetch-only options
+		this.follow = init.follow !== undefined ? init.follow : input.follow !== undefined ? input.follow : 20;
+		this.compress = init.compress !== undefined ? init.compress : input.compress !== undefined ? input.compress : true;
+		this.counter = init.counter || input.counter || 0;
+		this.agent = init.agent || input.agent;
+	}
 
-    get method() {
-        return this[INTERNALS$2].method;
-    }
+	get method() {
+		return this[INTERNALS$2].method;
+	}
 
-    get url() {
-        return format_url(this[INTERNALS$2].parsedURL);
-    }
+	get url() {
+		return format_url(this[INTERNALS$2].parsedURL);
+	}
 
-    get headers() {
-        return this[INTERNALS$2].headers;
-    }
+	get headers() {
+		return this[INTERNALS$2].headers;
+	}
 
-    get redirect() {
-        return this[INTERNALS$2].redirect;
-    }
+	get redirect() {
+		return this[INTERNALS$2].redirect;
+	}
 
-    get signal() {
-        return this[INTERNALS$2].signal;
-    }
+	get signal() {
+		return this[INTERNALS$2].signal;
+	}
 
-    /**
+	/**
   * Clone this request
   *
   * @return  Request
   */
-    clone() {
-        return new Request(this);
-    }
+	clone() {
+		return new Request(this);
+	}
 }
 
 Body.mixIn(Request.prototype);
 
 Object.defineProperty(Request.prototype, Symbol.toStringTag, {
-    value: 'Request',
-    writable: false,
-    enumerable: false,
-    configurable: true
+	value: 'Request',
+	writable: false,
+	enumerable: false,
+	configurable: true
 });
 
 Object.defineProperties(Request.prototype, {
-    method: { enumerable: true },
-    url: { enumerable: true },
-    headers: { enumerable: true },
-    redirect: { enumerable: true },
-    clone: { enumerable: true },
-    signal: { enumerable: true }
+	method: { enumerable: true },
+	url: { enumerable: true },
+	headers: { enumerable: true },
+	redirect: { enumerable: true },
+	clone: { enumerable: true },
+	signal: { enumerable: true }
 });
 
 /**
@@ -6609,69 +6609,69 @@ Object.defineProperties(Request.prototype, {
  * @return  Object   The options object to be passed to http.request
  */
 function getNodeRequestOptions(request) {
-    const parsedURL = request[INTERNALS$2].parsedURL;
-    const headers = new Headers(request[INTERNALS$2].headers);
+	const parsedURL = request[INTERNALS$2].parsedURL;
+	const headers = new Headers(request[INTERNALS$2].headers);
 
-    // fetch step 1.3
-    if (!headers.has('Accept')) {
-        headers.set('Accept', '*/*');
-    }
+	// fetch step 1.3
+	if (!headers.has('Accept')) {
+		headers.set('Accept', '*/*');
+	}
 
-    // Basic fetch
-    if (!parsedURL.protocol || !parsedURL.hostname) {
-        throw new TypeError('Only absolute URLs are supported');
-    }
+	// Basic fetch
+	if (!parsedURL.protocol || !parsedURL.hostname) {
+		throw new TypeError('Only absolute URLs are supported');
+	}
 
-    if (!/^https?:$/.test(parsedURL.protocol)) {
-        throw new TypeError('Only HTTP(S) protocols are supported');
-    }
+	if (!/^https?:$/.test(parsedURL.protocol)) {
+		throw new TypeError('Only HTTP(S) protocols are supported');
+	}
 
-    if (request.signal && request.body instanceof Stream.Readable && !streamDestructionSupported) {
-        throw new Error('Cancellation of streamed requests with AbortSignal is not supported in node < 8');
-    }
+	if (request.signal && request.body instanceof Stream.Readable && !streamDestructionSupported) {
+		throw new Error('Cancellation of streamed requests with AbortSignal is not supported in node < 8');
+	}
 
-    // HTTP-network-or-cache fetch steps 2.4-2.7
-    let contentLengthValue = null;
-    if (request.body == null && /^(POST|PUT)$/i.test(request.method)) {
-        contentLengthValue = '0';
-    }
-    if (request.body != null) {
-        const totalBytes = getTotalBytes(request);
-        if (typeof totalBytes === 'number') {
-            contentLengthValue = String(totalBytes);
-        }
-    }
-    if (contentLengthValue) {
-        headers.set('Content-Length', contentLengthValue);
-    }
+	// HTTP-network-or-cache fetch steps 2.4-2.7
+	let contentLengthValue = null;
+	if (request.body == null && /^(POST|PUT)$/i.test(request.method)) {
+		contentLengthValue = '0';
+	}
+	if (request.body != null) {
+		const totalBytes = getTotalBytes(request);
+		if (typeof totalBytes === 'number') {
+			contentLengthValue = String(totalBytes);
+		}
+	}
+	if (contentLengthValue) {
+		headers.set('Content-Length', contentLengthValue);
+	}
 
-    // HTTP-network-or-cache fetch step 2.11
-    if (!headers.has('User-Agent')) {
-        headers.set('User-Agent', 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)');
-    }
+	// HTTP-network-or-cache fetch step 2.11
+	if (!headers.has('User-Agent')) {
+		headers.set('User-Agent', 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)');
+	}
 
-    // HTTP-network-or-cache fetch step 2.15
-    if (request.compress && !headers.has('Accept-Encoding')) {
-        headers.set('Accept-Encoding', 'gzip,deflate');
-    }
+	// HTTP-network-or-cache fetch step 2.15
+	if (request.compress && !headers.has('Accept-Encoding')) {
+		headers.set('Accept-Encoding', 'gzip,deflate');
+	}
 
-    let agent = request.agent;
-    if (typeof agent === 'function') {
-        agent = agent(parsedURL);
-    }
+	let agent = request.agent;
+	if (typeof agent === 'function') {
+		agent = agent(parsedURL);
+	}
 
-    if (!headers.has('Connection') && !agent) {
-        headers.set('Connection', 'close');
-    }
+	if (!headers.has('Connection') && !agent) {
+		headers.set('Connection', 'close');
+	}
 
-    // HTTP-network fetch step 4.2
-    // chunked encoding is handled by Node.js
+	// HTTP-network fetch step 4.2
+	// chunked encoding is handled by Node.js
 
-    return Object.assign({}, parsedURL, {
-        method: request.method,
-        headers: exportNodeCompatibleHeaders(headers),
-        agent
-    });
+	return Object.assign({}, parsedURL, {
+		method: request.method,
+		headers: exportNodeCompatibleHeaders(headers),
+		agent
+	});
 }
 
 /**
@@ -6713,235 +6713,235 @@ const resolve_url = Url.resolve;
  */
 function fetch(url, opts) {
 
-    // allow custom promise
-    if (!fetch.Promise) {
-        throw new Error('native promise missing, set fetch.Promise to your favorite alternative');
-    }
+	// allow custom promise
+	if (!fetch.Promise) {
+		throw new Error('native promise missing, set fetch.Promise to your favorite alternative');
+	}
 
-    Body.Promise = fetch.Promise;
+	Body.Promise = fetch.Promise;
 
-    // wrap http.request into fetch
-    return new fetch.Promise(function (resolve, reject) {
-        // build request object
-        const request = new Request(url, opts);
-        const options = getNodeRequestOptions(request);
+	// wrap http.request into fetch
+	return new fetch.Promise(function (resolve, reject) {
+		// build request object
+		const request = new Request(url, opts);
+		const options = getNodeRequestOptions(request);
 
-        const send = (options.protocol === 'https:' ? https : http).request;
-        const signal = request.signal;
+		const send = (options.protocol === 'https:' ? https : http).request;
+		const signal = request.signal;
 
-        let response = null;
+		let response = null;
 
-        const abort = function abort() {
-            let error = new AbortError('The user aborted a request.');
-            reject(error);
-            if (request.body && request.body instanceof Stream.Readable) {
-                request.body.destroy(error);
-            }
-            if (!response || !response.body) return;
-            response.body.emit('error', error);
-        };
+		const abort = function abort() {
+			let error = new AbortError('The user aborted a request.');
+			reject(error);
+			if (request.body && request.body instanceof Stream.Readable) {
+				request.body.destroy(error);
+			}
+			if (!response || !response.body) return;
+			response.body.emit('error', error);
+		};
 
-        if (signal && signal.aborted) {
-            abort();
-            return;
-        }
+		if (signal && signal.aborted) {
+			abort();
+			return;
+		}
 
-        const abortAndFinalize = function abortAndFinalize() {
-            abort();
-            finalize();
-        };
+		const abortAndFinalize = function abortAndFinalize() {
+			abort();
+			finalize();
+		};
 
-        // send request
-        const req = send(options);
-        let reqTimeout;
+		// send request
+		const req = send(options);
+		let reqTimeout;
 
-        if (signal) {
-            signal.addEventListener('abort', abortAndFinalize);
-        }
+		if (signal) {
+			signal.addEventListener('abort', abortAndFinalize);
+		}
 
-        function finalize() {
-            req.abort();
-            if (signal) signal.removeEventListener('abort', abortAndFinalize);
-            clearTimeout(reqTimeout);
-        }
+		function finalize() {
+			req.abort();
+			if (signal) signal.removeEventListener('abort', abortAndFinalize);
+			clearTimeout(reqTimeout);
+		}
 
-        if (request.timeout) {
-            req.once('socket', function (socket) {
-                reqTimeout = setTimeout(function () {
-                    reject(new FetchError(`network timeout at: ${request.url}`, 'request-timeout'));
-                    finalize();
-                }, request.timeout);
-            });
-        }
+		if (request.timeout) {
+			req.once('socket', function (socket) {
+				reqTimeout = setTimeout(function () {
+					reject(new FetchError(`network timeout at: ${request.url}`, 'request-timeout'));
+					finalize();
+				}, request.timeout);
+			});
+		}
 
-        req.on('error', function (err) {
-            reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
-            finalize();
-        });
+		req.on('error', function (err) {
+			reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
+			finalize();
+		});
 
-        req.on('response', function (res) {
-            clearTimeout(reqTimeout);
+		req.on('response', function (res) {
+			clearTimeout(reqTimeout);
 
-            const headers = createHeadersLenient(res.headers);
+			const headers = createHeadersLenient(res.headers);
 
-            // HTTP fetch step 5
-            if (fetch.isRedirect(res.statusCode)) {
-                // HTTP fetch step 5.2
-                const location = headers.get('Location');
+			// HTTP fetch step 5
+			if (fetch.isRedirect(res.statusCode)) {
+				// HTTP fetch step 5.2
+				const location = headers.get('Location');
 
-                // HTTP fetch step 5.3
-                const locationURL = location === null ? null : resolve_url(request.url, location);
+				// HTTP fetch step 5.3
+				const locationURL = location === null ? null : resolve_url(request.url, location);
 
-                // HTTP fetch step 5.5
-                switch (request.redirect) {
-                    case 'error':
-                        reject(new FetchError(`redirect mode is set to error: ${request.url}`, 'no-redirect'));
-                        finalize();
-                        return;
-                    case 'manual':
-                        // node-fetch-specific step: make manual redirect a bit easier to use by setting the Location header value to the resolved URL.
-                        if (locationURL !== null) {
-                            // handle corrupted header
-                            try {
-                                headers.set('Location', locationURL);
-                            } catch (err) {
-                                // istanbul ignore next: nodejs server prevent invalid response headers, we can't test this through normal request
-                                reject(err);
-                            }
-                        }
-                        break;
-                    case 'follow':
-                        // HTTP-redirect fetch step 2
-                        if (locationURL === null) {
-                            break;
-                        }
+				// HTTP fetch step 5.5
+				switch (request.redirect) {
+					case 'error':
+						reject(new FetchError(`redirect mode is set to error: ${request.url}`, 'no-redirect'));
+						finalize();
+						return;
+					case 'manual':
+						// node-fetch-specific step: make manual redirect a bit easier to use by setting the Location header value to the resolved URL.
+						if (locationURL !== null) {
+							// handle corrupted header
+							try {
+								headers.set('Location', locationURL);
+							} catch (err) {
+								// istanbul ignore next: nodejs server prevent invalid response headers, we can't test this through normal request
+								reject(err);
+							}
+						}
+						break;
+					case 'follow':
+						// HTTP-redirect fetch step 2
+						if (locationURL === null) {
+							break;
+						}
 
-                        // HTTP-redirect fetch step 5
-                        if (request.counter >= request.follow) {
-                            reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
-                            finalize();
-                            return;
-                        }
+						// HTTP-redirect fetch step 5
+						if (request.counter >= request.follow) {
+							reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
+							finalize();
+							return;
+						}
 
-                        // HTTP-redirect fetch step 6 (counter increment)
-                        // Create a new Request object.
-                        const requestOpts = {
-                            headers: new Headers(request.headers),
-                            follow: request.follow,
-                            counter: request.counter + 1,
-                            agent: request.agent,
-                            compress: request.compress,
-                            method: request.method,
-                            body: request.body,
-                            signal: request.signal,
-                            timeout: request.timeout
-                        };
+						// HTTP-redirect fetch step 6 (counter increment)
+						// Create a new Request object.
+						const requestOpts = {
+							headers: new Headers(request.headers),
+							follow: request.follow,
+							counter: request.counter + 1,
+							agent: request.agent,
+							compress: request.compress,
+							method: request.method,
+							body: request.body,
+							signal: request.signal,
+							timeout: request.timeout
+						};
 
-                        // HTTP-redirect fetch step 9
-                        if (res.statusCode !== 303 && request.body && getTotalBytes(request) === null) {
-                            reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
-                            finalize();
-                            return;
-                        }
+						// HTTP-redirect fetch step 9
+						if (res.statusCode !== 303 && request.body && getTotalBytes(request) === null) {
+							reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
+							finalize();
+							return;
+						}
 
-                        // HTTP-redirect fetch step 11
-                        if (res.statusCode === 303 || (res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST') {
-                            requestOpts.method = 'GET';
-                            requestOpts.body = undefined;
-                            requestOpts.headers.delete('content-length');
-                        }
+						// HTTP-redirect fetch step 11
+						if (res.statusCode === 303 || (res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST') {
+							requestOpts.method = 'GET';
+							requestOpts.body = undefined;
+							requestOpts.headers.delete('content-length');
+						}
 
-                        // HTTP-redirect fetch step 15
-                        resolve(fetch(new Request(locationURL, requestOpts)));
-                        finalize();
-                        return;
-                }
-            }
+						// HTTP-redirect fetch step 15
+						resolve(fetch(new Request(locationURL, requestOpts)));
+						finalize();
+						return;
+				}
+			}
 
-            // prepare response
-            res.once('end', function () {
-                if (signal) signal.removeEventListener('abort', abortAndFinalize);
-            });
-            let body = res.pipe(new PassThrough$1());
+			// prepare response
+			res.once('end', function () {
+				if (signal) signal.removeEventListener('abort', abortAndFinalize);
+			});
+			let body = res.pipe(new PassThrough$1());
 
-            const response_options = {
-                url: request.url,
-                status: res.statusCode,
-                statusText: res.statusMessage,
-                headers: headers,
-                size: request.size,
-                timeout: request.timeout,
-                counter: request.counter
-            };
+			const response_options = {
+				url: request.url,
+				status: res.statusCode,
+				statusText: res.statusMessage,
+				headers: headers,
+				size: request.size,
+				timeout: request.timeout,
+				counter: request.counter
+			};
 
-            // HTTP-network fetch step 12.1.1.3
-            const codings = headers.get('Content-Encoding');
+			// HTTP-network fetch step 12.1.1.3
+			const codings = headers.get('Content-Encoding');
 
-            // HTTP-network fetch step 12.1.1.4: handle content codings
+			// HTTP-network fetch step 12.1.1.4: handle content codings
 
-            // in following scenarios we ignore compression support
-            // 1. compression support is disabled
-            // 2. HEAD request
-            // 3. no Content-Encoding header
-            // 4. no content response (204)
-            // 5. content not modified response (304)
-            if (!request.compress || request.method === 'HEAD' || codings === null || res.statusCode === 204 || res.statusCode === 304) {
-                response = new Response(body, response_options);
-                resolve(response);
-                return;
-            }
+			// in following scenarios we ignore compression support
+			// 1. compression support is disabled
+			// 2. HEAD request
+			// 3. no Content-Encoding header
+			// 4. no content response (204)
+			// 5. content not modified response (304)
+			if (!request.compress || request.method === 'HEAD' || codings === null || res.statusCode === 204 || res.statusCode === 304) {
+				response = new Response(body, response_options);
+				resolve(response);
+				return;
+			}
 
-            // For Node v6+
-            // Be less strict when decoding compressed responses, since sometimes
-            // servers send slightly invalid responses that are still accepted
-            // by common browsers.
-            // Always using Z_SYNC_FLUSH is what cURL does.
-            const zlibOptions = {
-                flush: zlib.Z_SYNC_FLUSH,
-                finishFlush: zlib.Z_SYNC_FLUSH
-            };
+			// For Node v6+
+			// Be less strict when decoding compressed responses, since sometimes
+			// servers send slightly invalid responses that are still accepted
+			// by common browsers.
+			// Always using Z_SYNC_FLUSH is what cURL does.
+			const zlibOptions = {
+				flush: zlib.Z_SYNC_FLUSH,
+				finishFlush: zlib.Z_SYNC_FLUSH
+			};
 
-            // for gzip
-            if (codings == 'gzip' || codings == 'x-gzip') {
-                body = body.pipe(zlib.createGunzip(zlibOptions));
-                response = new Response(body, response_options);
-                resolve(response);
-                return;
-            }
+			// for gzip
+			if (codings == 'gzip' || codings == 'x-gzip') {
+				body = body.pipe(zlib.createGunzip(zlibOptions));
+				response = new Response(body, response_options);
+				resolve(response);
+				return;
+			}
 
-            // for deflate
-            if (codings == 'deflate' || codings == 'x-deflate') {
-                // handle the infamous raw deflate response from old servers
-                // a hack for old IIS and Apache servers
-                const raw = res.pipe(new PassThrough$1());
-                raw.once('data', function (chunk) {
-                    // see http://stackoverflow.com/questions/37519828
-                    if ((chunk[0] & 0x0F) === 0x08) {
-                        body = body.pipe(zlib.createInflate());
-                    } else {
-                        body = body.pipe(zlib.createInflateRaw());
-                    }
-                    response = new Response(body, response_options);
-                    resolve(response);
-                });
-                return;
-            }
+			// for deflate
+			if (codings == 'deflate' || codings == 'x-deflate') {
+				// handle the infamous raw deflate response from old servers
+				// a hack for old IIS and Apache servers
+				const raw = res.pipe(new PassThrough$1());
+				raw.once('data', function (chunk) {
+					// see http://stackoverflow.com/questions/37519828
+					if ((chunk[0] & 0x0F) === 0x08) {
+						body = body.pipe(zlib.createInflate());
+					} else {
+						body = body.pipe(zlib.createInflateRaw());
+					}
+					response = new Response(body, response_options);
+					resolve(response);
+				});
+				return;
+			}
 
-            // for br
-            if (codings == 'br' && typeof zlib.createBrotliDecompress === 'function') {
-                body = body.pipe(zlib.createBrotliDecompress());
-                response = new Response(body, response_options);
-                resolve(response);
-                return;
-            }
+			// for br
+			if (codings == 'br' && typeof zlib.createBrotliDecompress === 'function') {
+				body = body.pipe(zlib.createBrotliDecompress());
+				response = new Response(body, response_options);
+				resolve(response);
+				return;
+			}
 
-            // otherwise, use response as-is
-            response = new Response(body, response_options);
-            resolve(response);
-        });
+			// otherwise, use response as-is
+			response = new Response(body, response_options);
+			resolve(response);
+		});
 
-        writeToStream(req, request);
-    });
+		writeToStream(req, request);
+	});
 }
 /**
  * Redirect code matching
@@ -6950,7 +6950,7 @@ function fetch(url, opts) {
  * @return  Boolean
  */
 fetch.isRedirect = function (code) {
-    return code === 301 || code === 302 || code === 303 || code === 307 || code === 308;
+	return code === 301 || code === 302 || code === 303 || code === 307 || code === 308;
 };
 
 // expose Promise
@@ -8589,39 +8589,39 @@ const path = __webpack_require__(622);
 const pathKey = __webpack_require__(39);
 
 module.exports = opts => {
-    opts = Object.assign({
-        cwd: process.cwd(),
-        path: process.env[pathKey()]
-    }, opts);
+	opts = Object.assign({
+		cwd: process.cwd(),
+		path: process.env[pathKey()]
+	}, opts);
 
-    let prev;
-    let pth = path.resolve(opts.cwd);
-    const ret = [];
+	let prev;
+	let pth = path.resolve(opts.cwd);
+	const ret = [];
 
-    while (prev !== pth) {
-        ret.push(path.join(pth, 'node_modules/.bin'));
-        prev = pth;
-        pth = path.resolve(pth, '..');
-    }
+	while (prev !== pth) {
+		ret.push(path.join(pth, 'node_modules/.bin'));
+		prev = pth;
+		pth = path.resolve(pth, '..');
+	}
 
-    // ensure the running `node` binary is used
-    ret.push(path.dirname(process.execPath));
+	// ensure the running `node` binary is used
+	ret.push(path.dirname(process.execPath));
 
-    return ret.concat(opts.path).join(path.delimiter);
+	return ret.concat(opts.path).join(path.delimiter);
 };
 
 module.exports.env = opts => {
-    opts = Object.assign({
-        env: process.env
-    }, opts);
+	opts = Object.assign({
+		env: process.env
+	}, opts);
 
-    const env = Object.assign({}, opts.env);
-    const path = pathKey({env});
+	const env = Object.assign({}, opts.env);
+	const path = pathKey({env});
 
-    opts.path = env[path];
-    env[path] = module.exports(opts);
+	opts.path = env[path];
+	env[path] = module.exports(opts);
 
-    return env;
+	return env;
 };
 
 
@@ -9160,18 +9160,18 @@ module.exports = isPlainObject;
 "use strict";
 
 module.exports = (promise, onFinally) => {
-    onFinally = onFinally || (() => {});
+	onFinally = onFinally || (() => {});
 
-    return promise.then(
-        val => new Promise(resolve => {
-            resolve(onFinally());
-        }).then(() => val),
-        err => new Promise(resolve => {
-            resolve(onFinally());
-        }).then(() => {
-            throw err;
-        })
-    );
+	return promise.then(
+		val => new Promise(resolve => {
+			resolve(onFinally());
+		}).then(() => val),
+		err => new Promise(resolve => {
+			resolve(onFinally());
+		}).then(() => {
+			throw err;
+		})
+	);
 };
 
 
@@ -9232,8 +9232,8 @@ class OidcClient {
             const res = yield httpclient
                 .getJson(id_token_url)
                 .catch(error => {
-                throw new Error(`Failed to get ID Token. \n
-        Error Code : ${error.statusCode}\n
+                throw new Error(`Failed to get ID Token. \n 
+        Error Code : ${error.statusCode}\n 
         Error Message: ${error.result.message}`);
             });
             const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
@@ -9485,18 +9485,18 @@ function removeHook (state, name, method) {
 "use strict";
 
 module.exports = function (x) {
-    var lf = typeof x === 'string' ? '\n' : '\n'.charCodeAt();
-    var cr = typeof x === 'string' ? '\r' : '\r'.charCodeAt();
+	var lf = typeof x === 'string' ? '\n' : '\n'.charCodeAt();
+	var cr = typeof x === 'string' ? '\r' : '\r'.charCodeAt();
 
-    if (x[x.length - 1] === lf) {
-        x = x.slice(0, x.length - 1);
-    }
+	if (x[x.length - 1] === lf) {
+		x = x.slice(0, x.length - 1);
+	}
 
-    if (x[x.length - 1] === cr) {
-        x = x.slice(0, x.length - 1);
-    }
+	if (x[x.length - 1] === cr) {
+		x = x.slice(0, x.length - 1);
+	}
 
-    return x;
+	return x;
 };
 
 
@@ -10906,20 +10906,20 @@ function authenticationBeforeRequest (state, options) {
 var shebangRegex = __webpack_require__(816);
 
 module.exports = function (str) {
-    var match = str.match(shebangRegex);
+	var match = str.match(shebangRegex);
 
-    if (!match) {
-        return null;
-    }
+	if (!match) {
+		return null;
+	}
 
-    var arr = match[0].replace(/#! ?/, '').split(' ');
-    var bin = arr[0].split('/').pop();
-    var arg = arr[1];
+	var arr = match[0].replace(/#! ?/, '').split(' ');
+	var bin = arr[0].split('/').pop();
+	var arg = arr[1];
 
-    return (bin === 'env' ?
-        arg :
-        bin + (arg ? ' ' + arg : '')
-    );
+	return (bin === 'env' ?
+		arg :
+		bin + (arg ? ' ' + arg : '')
+	);
 };
 
 
@@ -12112,7 +12112,7 @@ function hasNextPage (link) {
  */
 module.exports = function(fn) {
 
-    try { return fn() } catch (e) {}
+	try { return fn() } catch (e) {}
 
 }
 
@@ -12231,305 +12231,305 @@ const stdio = __webpack_require__(168);
 const TEN_MEGABYTES = 1000 * 1000 * 10;
 
 function handleArgs(cmd, args, opts) {
-    let parsed;
+	let parsed;
 
-    opts = Object.assign({
-        extendEnv: true,
-        env: {}
-    }, opts);
+	opts = Object.assign({
+		extendEnv: true,
+		env: {}
+	}, opts);
 
-    if (opts.extendEnv) {
-        opts.env = Object.assign({}, process.env, opts.env);
-    }
+	if (opts.extendEnv) {
+		opts.env = Object.assign({}, process.env, opts.env);
+	}
 
-    if (opts.__winShell === true) {
-        delete opts.__winShell;
-        parsed = {
-            command: cmd,
-            args,
-            options: opts,
-            file: cmd,
-            original: {
-                cmd,
-                args
-            }
-        };
-    } else {
-        parsed = crossSpawn._parse(cmd, args, opts);
-    }
+	if (opts.__winShell === true) {
+		delete opts.__winShell;
+		parsed = {
+			command: cmd,
+			args,
+			options: opts,
+			file: cmd,
+			original: {
+				cmd,
+				args
+			}
+		};
+	} else {
+		parsed = crossSpawn._parse(cmd, args, opts);
+	}
 
-    opts = Object.assign({
-        maxBuffer: TEN_MEGABYTES,
-        buffer: true,
-        stripEof: true,
-        preferLocal: true,
-        localDir: parsed.options.cwd || process.cwd(),
-        encoding: 'utf8',
-        reject: true,
-        cleanup: true
-    }, parsed.options);
+	opts = Object.assign({
+		maxBuffer: TEN_MEGABYTES,
+		buffer: true,
+		stripEof: true,
+		preferLocal: true,
+		localDir: parsed.options.cwd || process.cwd(),
+		encoding: 'utf8',
+		reject: true,
+		cleanup: true
+	}, parsed.options);
 
-    opts.stdio = stdio(opts);
+	opts.stdio = stdio(opts);
 
-    if (opts.preferLocal) {
-        opts.env = npmRunPath.env(Object.assign({}, opts, {cwd: opts.localDir}));
-    }
+	if (opts.preferLocal) {
+		opts.env = npmRunPath.env(Object.assign({}, opts, {cwd: opts.localDir}));
+	}
 
-    if (opts.detached) {
-        // #115
-        opts.cleanup = false;
-    }
+	if (opts.detached) {
+		// #115
+		opts.cleanup = false;
+	}
 
-    if (process.platform === 'win32' && path.basename(parsed.command) === 'cmd.exe') {
-        // #116
-        parsed.args.unshift('/q');
-    }
+	if (process.platform === 'win32' && path.basename(parsed.command) === 'cmd.exe') {
+		// #116
+		parsed.args.unshift('/q');
+	}
 
-    return {
-        cmd: parsed.command,
-        args: parsed.args,
-        opts,
-        parsed
-    };
+	return {
+		cmd: parsed.command,
+		args: parsed.args,
+		opts,
+		parsed
+	};
 }
 
 function handleInput(spawned, input) {
-    if (input === null || input === undefined) {
-        return;
-    }
+	if (input === null || input === undefined) {
+		return;
+	}
 
-    if (isStream(input)) {
-        input.pipe(spawned.stdin);
-    } else {
-        spawned.stdin.end(input);
-    }
+	if (isStream(input)) {
+		input.pipe(spawned.stdin);
+	} else {
+		spawned.stdin.end(input);
+	}
 }
 
 function handleOutput(opts, val) {
-    if (val && opts.stripEof) {
-        val = stripEof(val);
-    }
+	if (val && opts.stripEof) {
+		val = stripEof(val);
+	}
 
-    return val;
+	return val;
 }
 
 function handleShell(fn, cmd, opts) {
-    let file = '/bin/sh';
-    let args = ['-c', cmd];
+	let file = '/bin/sh';
+	let args = ['-c', cmd];
 
-    opts = Object.assign({}, opts);
+	opts = Object.assign({}, opts);
 
-    if (process.platform === 'win32') {
-        opts.__winShell = true;
-        file = process.env.comspec || 'cmd.exe';
-        args = ['/s', '/c', `"${cmd}"`];
-        opts.windowsVerbatimArguments = true;
-    }
+	if (process.platform === 'win32') {
+		opts.__winShell = true;
+		file = process.env.comspec || 'cmd.exe';
+		args = ['/s', '/c', `"${cmd}"`];
+		opts.windowsVerbatimArguments = true;
+	}
 
-    if (opts.shell) {
-        file = opts.shell;
-        delete opts.shell;
-    }
+	if (opts.shell) {
+		file = opts.shell;
+		delete opts.shell;
+	}
 
-    return fn(file, args, opts);
+	return fn(file, args, opts);
 }
 
 function getStream(process, stream, {encoding, buffer, maxBuffer}) {
-    if (!process[stream]) {
-        return null;
-    }
+	if (!process[stream]) {
+		return null;
+	}
 
-    let ret;
+	let ret;
 
-    if (!buffer) {
-        // TODO: Use `ret = util.promisify(stream.finished)(process[stream]);` when targeting Node.js 10
-        ret = new Promise((resolve, reject) => {
-            process[stream]
-                .once('end', resolve)
-                .once('error', reject);
-        });
-    } else if (encoding) {
-        ret = _getStream(process[stream], {
-            encoding,
-            maxBuffer
-        });
-    } else {
-        ret = _getStream.buffer(process[stream], {maxBuffer});
-    }
+	if (!buffer) {
+		// TODO: Use `ret = util.promisify(stream.finished)(process[stream]);` when targeting Node.js 10
+		ret = new Promise((resolve, reject) => {
+			process[stream]
+				.once('end', resolve)
+				.once('error', reject);
+		});
+	} else if (encoding) {
+		ret = _getStream(process[stream], {
+			encoding,
+			maxBuffer
+		});
+	} else {
+		ret = _getStream.buffer(process[stream], {maxBuffer});
+	}
 
-    return ret.catch(err => {
-        err.stream = stream;
-        err.message = `${stream} ${err.message}`;
-        throw err;
-    });
+	return ret.catch(err => {
+		err.stream = stream;
+		err.message = `${stream} ${err.message}`;
+		throw err;
+	});
 }
 
 function makeError(result, options) {
-    const {stdout, stderr} = result;
+	const {stdout, stderr} = result;
 
-    let err = result.error;
-    const {code, signal} = result;
+	let err = result.error;
+	const {code, signal} = result;
 
-    const {parsed, joinedCmd} = options;
-    const timedOut = options.timedOut || false;
+	const {parsed, joinedCmd} = options;
+	const timedOut = options.timedOut || false;
 
-    if (!err) {
-        let output = '';
+	if (!err) {
+		let output = '';
 
-        if (Array.isArray(parsed.opts.stdio)) {
-            if (parsed.opts.stdio[2] !== 'inherit') {
-                output += output.length > 0 ? stderr : `\n${stderr}`;
-            }
+		if (Array.isArray(parsed.opts.stdio)) {
+			if (parsed.opts.stdio[2] !== 'inherit') {
+				output += output.length > 0 ? stderr : `\n${stderr}`;
+			}
 
-            if (parsed.opts.stdio[1] !== 'inherit') {
-                output += `\n${stdout}`;
-            }
-        } else if (parsed.opts.stdio !== 'inherit') {
-            output = `\n${stderr}${stdout}`;
-        }
+			if (parsed.opts.stdio[1] !== 'inherit') {
+				output += `\n${stdout}`;
+			}
+		} else if (parsed.opts.stdio !== 'inherit') {
+			output = `\n${stderr}${stdout}`;
+		}
 
-        err = new Error(`Command failed: ${joinedCmd}${output}`);
-        err.code = code < 0 ? errname(code) : code;
-    }
+		err = new Error(`Command failed: ${joinedCmd}${output}`);
+		err.code = code < 0 ? errname(code) : code;
+	}
 
-    err.stdout = stdout;
-    err.stderr = stderr;
-    err.failed = true;
-    err.signal = signal || null;
-    err.cmd = joinedCmd;
-    err.timedOut = timedOut;
+	err.stdout = stdout;
+	err.stderr = stderr;
+	err.failed = true;
+	err.signal = signal || null;
+	err.cmd = joinedCmd;
+	err.timedOut = timedOut;
 
-    return err;
+	return err;
 }
 
 function joinCmd(cmd, args) {
-    let joinedCmd = cmd;
+	let joinedCmd = cmd;
 
-    if (Array.isArray(args) && args.length > 0) {
-        joinedCmd += ' ' + args.join(' ');
-    }
+	if (Array.isArray(args) && args.length > 0) {
+		joinedCmd += ' ' + args.join(' ');
+	}
 
-    return joinedCmd;
+	return joinedCmd;
 }
 
 module.exports = (cmd, args, opts) => {
-    const parsed = handleArgs(cmd, args, opts);
-    const {encoding, buffer, maxBuffer} = parsed.opts;
-    const joinedCmd = joinCmd(cmd, args);
+	const parsed = handleArgs(cmd, args, opts);
+	const {encoding, buffer, maxBuffer} = parsed.opts;
+	const joinedCmd = joinCmd(cmd, args);
 
-    let spawned;
-    try {
-        spawned = childProcess.spawn(parsed.cmd, parsed.args, parsed.opts);
-    } catch (err) {
-        return Promise.reject(err);
-    }
+	let spawned;
+	try {
+		spawned = childProcess.spawn(parsed.cmd, parsed.args, parsed.opts);
+	} catch (err) {
+		return Promise.reject(err);
+	}
 
-    let removeExitHandler;
-    if (parsed.opts.cleanup) {
-        removeExitHandler = onExit(() => {
-            spawned.kill();
-        });
-    }
+	let removeExitHandler;
+	if (parsed.opts.cleanup) {
+		removeExitHandler = onExit(() => {
+			spawned.kill();
+		});
+	}
 
-    let timeoutId = null;
-    let timedOut = false;
+	let timeoutId = null;
+	let timedOut = false;
 
-    const cleanup = () => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-            timeoutId = null;
-        }
+	const cleanup = () => {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
 
-        if (removeExitHandler) {
-            removeExitHandler();
-        }
-    };
+		if (removeExitHandler) {
+			removeExitHandler();
+		}
+	};
 
-    if (parsed.opts.timeout > 0) {
-        timeoutId = setTimeout(() => {
-            timeoutId = null;
-            timedOut = true;
-            spawned.kill(parsed.opts.killSignal);
-        }, parsed.opts.timeout);
-    }
+	if (parsed.opts.timeout > 0) {
+		timeoutId = setTimeout(() => {
+			timeoutId = null;
+			timedOut = true;
+			spawned.kill(parsed.opts.killSignal);
+		}, parsed.opts.timeout);
+	}
 
-    const processDone = new Promise(resolve => {
-        spawned.on('exit', (code, signal) => {
-            cleanup();
-            resolve({code, signal});
-        });
+	const processDone = new Promise(resolve => {
+		spawned.on('exit', (code, signal) => {
+			cleanup();
+			resolve({code, signal});
+		});
 
-        spawned.on('error', err => {
-            cleanup();
-            resolve({error: err});
-        });
+		spawned.on('error', err => {
+			cleanup();
+			resolve({error: err});
+		});
 
-        if (spawned.stdin) {
-            spawned.stdin.on('error', err => {
-                cleanup();
-                resolve({error: err});
-            });
-        }
-    });
+		if (spawned.stdin) {
+			spawned.stdin.on('error', err => {
+				cleanup();
+				resolve({error: err});
+			});
+		}
+	});
 
-    function destroy() {
-        if (spawned.stdout) {
-            spawned.stdout.destroy();
-        }
+	function destroy() {
+		if (spawned.stdout) {
+			spawned.stdout.destroy();
+		}
 
-        if (spawned.stderr) {
-            spawned.stderr.destroy();
-        }
-    }
+		if (spawned.stderr) {
+			spawned.stderr.destroy();
+		}
+	}
 
-    const handlePromise = () => pFinally(Promise.all([
-        processDone,
-        getStream(spawned, 'stdout', {encoding, buffer, maxBuffer}),
-        getStream(spawned, 'stderr', {encoding, buffer, maxBuffer})
-    ]).then(arr => {
-        const result = arr[0];
-        result.stdout = arr[1];
-        result.stderr = arr[2];
+	const handlePromise = () => pFinally(Promise.all([
+		processDone,
+		getStream(spawned, 'stdout', {encoding, buffer, maxBuffer}),
+		getStream(spawned, 'stderr', {encoding, buffer, maxBuffer})
+	]).then(arr => {
+		const result = arr[0];
+		result.stdout = arr[1];
+		result.stderr = arr[2];
 
-        if (result.error || result.code !== 0 || result.signal !== null) {
-            const err = makeError(result, {
-                joinedCmd,
-                parsed,
-                timedOut
-            });
+		if (result.error || result.code !== 0 || result.signal !== null) {
+			const err = makeError(result, {
+				joinedCmd,
+				parsed,
+				timedOut
+			});
 
-            // TODO: missing some timeout logic for killed
-            // https://github.com/nodejs/node/blob/master/lib/child_process.js#L203
-            // err.killed = spawned.killed || killed;
-            err.killed = err.killed || spawned.killed;
+			// TODO: missing some timeout logic for killed
+			// https://github.com/nodejs/node/blob/master/lib/child_process.js#L203
+			// err.killed = spawned.killed || killed;
+			err.killed = err.killed || spawned.killed;
 
-            if (!parsed.opts.reject) {
-                return err;
-            }
+			if (!parsed.opts.reject) {
+				return err;
+			}
 
-            throw err;
-        }
+			throw err;
+		}
 
-        return {
-            stdout: handleOutput(parsed.opts, result.stdout),
-            stderr: handleOutput(parsed.opts, result.stderr),
-            code: 0,
-            failed: false,
-            killed: false,
-            signal: null,
-            cmd: joinedCmd,
-            timedOut: false
-        };
-    }), destroy);
+		return {
+			stdout: handleOutput(parsed.opts, result.stdout),
+			stderr: handleOutput(parsed.opts, result.stderr),
+			code: 0,
+			failed: false,
+			killed: false,
+			signal: null,
+			cmd: joinedCmd,
+			timedOut: false
+		};
+	}), destroy);
 
-    crossSpawn._enoent.hookChildProcess(spawned, parsed.parsed);
+	crossSpawn._enoent.hookChildProcess(spawned, parsed.parsed);
 
-    handleInput(spawned, parsed.opts.input);
+	handleInput(spawned, parsed.opts.input);
 
-    spawned.then = (onfulfilled, onrejected) => handlePromise().then(onfulfilled, onrejected);
-    spawned.catch = onrejected => handlePromise().catch(onrejected);
+	spawned.then = (onfulfilled, onrejected) => handlePromise().then(onfulfilled, onrejected);
+	spawned.catch = onrejected => handlePromise().catch(onrejected);
 
-    return spawned;
+	return spawned;
 };
 
 // TODO: set `stderr: 'ignore'` when that option is implemented
@@ -12541,38 +12541,38 @@ module.exports.stderr = (...args) => module.exports(...args).then(x => x.stderr)
 module.exports.shell = (cmd, opts) => handleShell(module.exports, cmd, opts);
 
 module.exports.sync = (cmd, args, opts) => {
-    const parsed = handleArgs(cmd, args, opts);
-    const joinedCmd = joinCmd(cmd, args);
+	const parsed = handleArgs(cmd, args, opts);
+	const joinedCmd = joinCmd(cmd, args);
 
-    if (isStream(parsed.opts.input)) {
-        throw new TypeError('The `input` option cannot be a stream in sync mode');
-    }
+	if (isStream(parsed.opts.input)) {
+		throw new TypeError('The `input` option cannot be a stream in sync mode');
+	}
 
-    const result = childProcess.spawnSync(parsed.cmd, parsed.args, parsed.opts);
-    result.code = result.status;
+	const result = childProcess.spawnSync(parsed.cmd, parsed.args, parsed.opts);
+	result.code = result.status;
 
-    if (result.error || result.status !== 0 || result.signal !== null) {
-        const err = makeError(result, {
-            joinedCmd,
-            parsed
-        });
+	if (result.error || result.status !== 0 || result.signal !== null) {
+		const err = makeError(result, {
+			joinedCmd,
+			parsed
+		});
 
-        if (!parsed.opts.reject) {
-            return err;
-        }
+		if (!parsed.opts.reject) {
+			return err;
+		}
 
-        throw err;
-    }
+		throw err;
+	}
 
-    return {
-        stdout: handleOutput(parsed.opts, result.stdout),
-        stderr: handleOutput(parsed.opts, result.stderr),
-        code: 0,
-        failed: false,
-        signal: null,
-        cmd: joinedCmd,
-        timedOut: false
-    };
+	return {
+		stdout: handleOutput(parsed.opts, result.stdout),
+		stderr: handleOutput(parsed.opts, result.stderr),
+		code: 0,
+		failed: false,
+		signal: null,
+		cmd: joinedCmd,
+		timedOut: false
+	};
 };
 
 module.exports.shellSync = (cmd, opts) => handleShell(module.exports.sync, cmd, opts);
@@ -12588,52 +12588,52 @@ module.exports.shellSync = (cmd, opts) => handleShell(module.exports.sync, cmd, 
 const {PassThrough} = __webpack_require__(794);
 
 module.exports = options => {
-    options = Object.assign({}, options);
+	options = Object.assign({}, options);
 
-    const {array} = options;
-    let {encoding} = options;
-    const buffer = encoding === 'buffer';
-    let objectMode = false;
+	const {array} = options;
+	let {encoding} = options;
+	const buffer = encoding === 'buffer';
+	let objectMode = false;
 
-    if (array) {
-        objectMode = !(encoding || buffer);
-    } else {
-        encoding = encoding || 'utf8';
-    }
+	if (array) {
+		objectMode = !(encoding || buffer);
+	} else {
+		encoding = encoding || 'utf8';
+	}
 
-    if (buffer) {
-        encoding = null;
-    }
+	if (buffer) {
+		encoding = null;
+	}
 
-    let len = 0;
-    const ret = [];
-    const stream = new PassThrough({objectMode});
+	let len = 0;
+	const ret = [];
+	const stream = new PassThrough({objectMode});
 
-    if (encoding) {
-        stream.setEncoding(encoding);
-    }
+	if (encoding) {
+		stream.setEncoding(encoding);
+	}
 
-    stream.on('data', chunk => {
-        ret.push(chunk);
+	stream.on('data', chunk => {
+		ret.push(chunk);
 
-        if (objectMode) {
-            len = ret.length;
-        } else {
-            len += chunk.length;
-        }
-    });
+		if (objectMode) {
+			len = ret.length;
+		} else {
+			len += chunk.length;
+		}
+	});
 
-    stream.getBufferedValue = () => {
-        if (array) {
-            return ret;
-        }
+	stream.getBufferedValue = () => {
+		if (array) {
+			return ret;
+		}
 
-        return buffer ? Buffer.concat(ret, len) : ret.join('');
-    };
+		return buffer ? Buffer.concat(ret, len) : ret.join('');
+	};
 
-    stream.getBufferedLength = () => len;
+	stream.getBufferedLength = () => len;
 
-    return stream;
+	return stream;
 };
 
 
