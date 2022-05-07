@@ -1,7 +1,8 @@
 jest.mock('fs', () => ({
   promises: {
     access: jest.fn()
-  }
+  },
+  existsSync: jest.fn()
 }));
 jest.mock('@actions/core');
 jest.mock('@actions/github');
