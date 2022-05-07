@@ -1,6 +1,10 @@
+jest.mock('fs', () => ({
+  promises: {
+    access: jest.fn()
+  }
+}));
 jest.mock('@actions/core');
 jest.mock('@actions/github');
-jest.mock('fs');
 
 const core = require('@actions/core');
 const { GitHub, context } = require('@actions/github');
@@ -70,7 +74,7 @@ describe('Upload Release Asset', () => {
 
     await run();
 
-    expect(core.setOutput).toHaveBeenNthCalledWith(1, 'browser_download_url', 'browserDownloadUrl');
+    expect(core.setOutput).toHaveBeenNthCalledWith(1, 'browser_download_url', ['browserDownloadUrl']);
   });
 
   test('Action fails elegantly', async () => {
