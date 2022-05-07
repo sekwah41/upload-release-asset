@@ -1,23 +1,27 @@
 # GitHub Action - Releases API
 
-**Please note:** This repository is currently unmaintained by a team of developers at GitHub. The 
-repository is here and you can use it as an example, or in Actions. However please be aware that 
-we are not going to be updating issues or pull requests on this repository.
 
-**Maintained Actions:**
-* [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
+**Please note:** This is just to fix the original action for my specific use cases.
+Feel free to use it as you wish or open an issue if you want/need additional behaviors.
 
-To reflect this state we’ve marked this repository as Archived.
+I believe there are other actions out there that can be used for this purpose, though it was hard to figure out which ones worked or were unmaintained.
+Also, they didn't seem to work as a direct replacement.
 
-If you are having an issue or question about GitHub Actions then please [contact customer support](https://help.github.com/en/articles/about-github-actions#contacting-support).
-
-If you have found a security issue [please submit it here](https://hackerone.com/github).
+**This is meant to act as a direct replacement for the original action with clearly documented changes.**
 
 ---
 
-This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Upload a Release Asset](https://developer.github.com/v3/repos/releases/#upload-a-release-asset) endpoint, to allow you to leverage GitHub Actions to upload release assets.
+# Edits
 
-<a href="https://github.com/actions/upload-release-asset"><img alt="GitHub Actions status" src="https://github.com/actions/upload-release-asset/workflows/Tests/badge.svg"></a>
+## With Variables
+ * `asset_path` can now take wildcards as well as an array of paths.
+ * `asset_content_type` is now optional
+
+## Outputs
+ * `browser_download_url` is now an array of url's
+---
+
+This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Upload a Release Asset](https://developer.github.com/v3/repos/releases/#upload-a-release-asset) endpoint, to allow you to leverage GitHub Actions to upload release assets.
 
 ## Usage
 ### Pre-requisites
@@ -67,18 +71,18 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        id: upload-release-asset 
+        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ./my-artifact.zip
           asset_name: my-artifact.zip
           asset_content_type: application/zip
 ```
 
-This will upload a release artifact to an existing release, outputting the `browser_download_url` for the asset which could be handled by a third party service, or by GitHub Actions for additional uses. For more information, see the GitHub Documentation for the [upload a release asset](https://developer.github.com/v3/repos/releases/#upload-a-release-asset) endpoint. 
+This will upload a release artifact to an existing release, outputting the `browser_download_url` for the asset which could be handled by a third party service, or by GitHub Actions for additional uses. For more information, see the GitHub Documentation for the [upload a release asset](https://developer.github.com/v3/repos/releases/#upload-a-release-asset) endpoint.
 
 ## Contributing
 We would love you to contribute to `@actions/upload-release-asset`, pull requests are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) for more information.
