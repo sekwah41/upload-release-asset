@@ -23,6 +23,8 @@ Also, they didn't seem to work as a direct replacement.
 
 This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Upload a Release Asset](https://developer.github.com/v3/repos/releases/#upload-a-release-asset) endpoint, to allow you to leverage GitHub Actions to upload release assets.
 
+[![Tests](https://github.com/sekwah41/upload-release-asset/actions/workflows/ci.yml/badge.svg)](https://github.com/sekwah41/upload-release-asset/actions/workflows/ci.yml)
+
 ## Usage
 ### Pre-requisites
 Create a workflow `.yml` file in your repositories `.github/workflows` directory. An [example workflow](#example-workflow---upload-a-release-asset) is available below. For more information, reference the GitHub Help Documentation for [Creating a workflow file](https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file). You also will need to have a release to upload your asset to, which could be created programmatically by [`@actions/create-release`](https://www.github.com/actions/create-release) as show in the example workflow.
