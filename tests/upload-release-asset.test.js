@@ -1,9 +1,4 @@
-jest.mock('fs', () => ({
-  promises: {
-    access: jest.fn()
-  },
-  existsSync: jest.fn()
-}));
+jest.mock('fs');
 jest.mock('@actions/core');
 jest.mock('@actions/github');
 
@@ -18,18 +13,25 @@ describe('Upload Release Asset', () => {
   let content;
 
   beforeEach(() => {
-    uploadReleaseAsset = jest.fn().mockReturnValueOnce({
+    uploadReleaseAsset = jest.fn().mockReturnValue({
       data: {
         browser_download_url: 'browserDownloadUrl'
       }
     });
 
-    fs.statSync = jest.fn().mockReturnValueOnce({
-      size: 527
-    });
+    const MOCK_FILE_INFO = {
+      'assset_path/singlefile.js': 'console.log("file1 contents");',
+      'path/to/file2.txt': 'file2 contents'
+    };
 
-    content = Buffer.from('test content');
-    fs.readFileSync = jest.fn().mockReturnValueOnce(content);
+    require('fs').__setMockFiles(MOCK_FILE_INFO);
+
+    // fs.statSync = jest.fn().mockReturnValueOnce({
+    //   size: 527
+    // });
+
+    //content = Buffer.from('test content');
+    //fs.readFileSync = jest.fn().mockReturnValueOnce(content);
 
     context.repo = {
       owner: 'owner',
@@ -45,11 +47,11 @@ describe('Upload Release Asset', () => {
     GitHub.mockImplementation(() => github);
   });
 
-  test('Upload release asset endpoint is called', async () => {
+  test.only('Upload release asset endpoint is called', async () => {
     core.getInput = jest
       .fn()
       .mockReturnValueOnce('upload_url')
-      .mockReturnValueOnce('asset_path')
+      .mockReturnValueOnce('asset_path/singlefile.js')
       .mockReturnValueOnce('asset_name')
       .mockReturnValueOnce('asset_content_type');
 
