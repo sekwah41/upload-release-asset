@@ -9,6 +9,8 @@ Also, they didn't seem to work as a direct replacement.
 
 **This is meant to act as a direct replacement for the original action with clearly documented changes.**
 
+If you are having any troubles, you can enable additional logs and info by setting `ACTIONS_STEP_DEBUG` to `true` in your secretes
+
 ---
 
 # Edits

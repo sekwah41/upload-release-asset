@@ -6153,6 +6153,7 @@ async function run() {
     } else {
       info(`Found ${searchResults.length} files to upload`);
       for (const file of searchResults) {
+        debug(`Uploading ${file}`);
         downloadUrls.push(
           await uploadFile({
             github,
