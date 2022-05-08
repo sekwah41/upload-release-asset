@@ -1,0 +1,36 @@
+name: "Fake Test Run"
+
+on:
+  pull_request:
+  push:
+    branches:         # array of glob patterns matching against refs/heads. Optional; defaults to all
+      - main          # triggers on pushes that contain changes in main
+
+jobs:
+  test-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir test-folder
+          echo "test" > test-folder/test-file.exe
+          echo "test" > test-folder/another.exe
+          echo "test" > test-folder/test-file.txt
+          echo "test" > test-folder/other-files.txt
+          echo "test" > test-folder/test-file.AppImage
+          mkdir test-folder/test-subfolder
+          echo "test" > test-folder/test-subfolder/test-file.exe
+      - name: Upload exe files in test-folder
+        uses: ./ # Uses an action in the root directory
+        with:
+          upload_url: "test_upload"
+          asset_path: |
+            test-folder/*.exe
+          asset_name: ${{ matrix.file }}
+
+      - name: Upload exe files in test-folder recursively
+        uses: ./ # Uses an action in the root directory
+        with:
+          upload_url: "test_upload"
+          asset_path: |
+            test-folder/**/*.exe
+          asset_name: ${{ matrix.file }}
