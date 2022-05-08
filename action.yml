@@ -1,5 +1,5 @@
-name: 'Upload Release Assets'
-description: 'Upload a release asset to an existing release in your repository'
+name: 'Upload Release Asset(s)'
+description: 'Upload release assets to an existing release in your repository. Uses the same file search logic as actions/upload-artifact'
 author: 'GitHub'
 inputs:
   upload_url:
