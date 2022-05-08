@@ -36,15 +36,12 @@ async function uploadFile({ github, uploadUrl, assetPath, assetContentType, asse
   // Upload a release asset
   // API Documentation: https://developer.github.com/v3/repos/releases/#upload-a-release-asset
   // Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-upload-release-asset
-  const uploadAssetResponse =
-    uploadUrl === 'test_upload'
-      ? { data: { browser_download_url: `test_download_url_for_${fileName}` } }
-      : await github.repos.uploadReleaseAsset({
-          url: uploadUrl,
-          headers,
-          name: fileName,
-          file: fs.readFileSync(assetPath)
-        });
+  const uploadAssetResponse = await github.repos.uploadReleaseAsset({
+    url: uploadUrl,
+    headers,
+    name: fileName,
+    file: fs.readFileSync(assetPath)
+  });
 
   // Get the browser_download_url for the uploaded release asset from the response
   const {
