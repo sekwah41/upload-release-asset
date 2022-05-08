@@ -14,7 +14,8 @@ Also, they didn't seem to work as a direct replacement.
 # Edits
 
 ## With Variables
- * `asset_path` can now take wildcards as well as an array of paths.
+ * `asset_path` can now take wildcards as well as an array of paths. Uses [@actions/glob](https://github.com/actions/toolkit/tree/main/packages/glob) so the same as [actions/upload-artifact](https://github.com/actions/upload-artifact)
+ * `asset_name` Will be ignored if there are multiple files
  * `asset_content_type` is now optional
 
 ## Outputs

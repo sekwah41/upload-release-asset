@@ -1,6 +1,5 @@
 {
   "extends": [
-    "airbnb",
     "prettier"
   ],
   "env": {
@@ -20,5 +19,8 @@
   },
   "plugins": [
     "prettier"
-  ]
+  ],
+  "parserOptions": {
+    "ecmaVersion": 8
+  }
 }
