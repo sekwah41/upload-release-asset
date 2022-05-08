@@ -6073,7 +6073,7 @@ async function uploadFile({ github, uploadUrl, assetPath, assetContentType, asse
   // Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-upload-release-asset
   const uploadAssetResponse =
     uploadUrl === 'test_upload'
-      ? 'asset_was_not_uploaded'
+      ? { data: { browser_download_url: `test_download_url_for_${fileName}` } }
       : await github.repos.uploadReleaseAsset({
           url: uploadUrl,
           headers,
