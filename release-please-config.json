@@ -1,10 +1,6 @@
 {
+    "bootstrap-sha": "6e8e5debe0a170415b692aea3f46bc3bc7ada9c9",
     "release-type": "node",
-    "packages": {
-        ".": {
-            "package-name": ""
-        }
-    },
     "changelog-sections": [
         { "type": "feat", "section": "Features ✨" },
         { "type": "feature", "section": "Features ✨" },
