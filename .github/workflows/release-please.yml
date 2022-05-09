@@ -12,7 +12,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          token: ${{secrets.GITHUB_TOKEN}}
+          token: ${{secrets.PAT}}
           command: manifest
           # See how to configure file https://github.com/googleapis/release-please/blob/main/docs/manifest-releaser.md
           # See output info at https://github.com/google-github-actions/release-please-action#configuration for variables
