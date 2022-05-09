@@ -1,23 +1,10 @@
 {
-    "bootstrap-sha": "aa7b8bda0ff00cac4745e750d6f9e7550f19462d",
     "release-type": "node",
     "packages": {
         ".": {
             "package-name": ""
         }
     },
-    "extra-files": [
-        {
-            "type": "json",
-            "path": "packages/main/package.json",
-            "jsonpath": "$.version"
-        },
-        {
-            "type": "json",
-            "path": "packages/renderer/package.json",
-            "jsonpath": "$.version"
-        }
-    ],
     "changelog-sections": [
         { "type": "feat", "section": "Features ✨" },
         { "type": "feature", "section": "Features ✨" },
