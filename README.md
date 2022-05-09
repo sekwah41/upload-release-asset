@@ -1,10 +1,9 @@
 # GitHub Action - Releases API
 
-Why isn't this a fork?
-The original repo is now archived as well as GitHub Actions for the releases doesn't work due to fork actions have read-only access.
-
 **Please note:** This is just to fix the original action for my specific use cases.
 Feel free to use it as you wish or open an issue if you want/need additional behaviors.
+
+If you want to make a pr be careful that it's not going to the original repo.
 
 **This is meant to act as almost a direct replacement for the original that can take multiple files.**
 
