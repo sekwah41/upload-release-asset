@@ -1,4 +1,5 @@
 name: 'Upload Release Asset(s)'
+uses: sekwah41/upload-release-assets@v1.1.0
 description: 'Upload release assets to an existing release in your repository. Uses the same file search logic as actions/upload-artifact'
 author: 'GitHub'
 inputs:
@@ -23,3 +24,5 @@ runs:
 branding:
   icon: 'package'
   color: 'gray-dark'
+      
+            
